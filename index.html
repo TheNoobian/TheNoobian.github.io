@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bruno Pini | Software Engineer</title>
+    <title>Bruno Pini | Frontend & Mobile Dev</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -13,7 +13,7 @@
             --text-muted: #a3a3a3;
             --border-light: rgba(255, 255, 255, 0.1);
             --border-hover: rgba(255, 255, 255, 0.3);
-            --accent: #3b82f6; /* Azul sutil para destacar */
+            --accent: #3b82f6;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,42 +27,34 @@
             overflow-x: hidden;
         }
 
-        /* Tipografías Utilitarias */
         .mono { font-family: 'JetBrains Mono', monospace; }
         .text-xs { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; }
         .section-label { color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.4em; text-transform: uppercase; display: block; margin-bottom: 1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem; }
         
-        /* Layout Base */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         section { padding: 8rem 0; border-bottom: 1px solid var(--border-light); }
         
-        /* Navbar */
         nav { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid var(--border-light); }
         .nav-content { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; max-width: 1200px; margin: 0 auto; }
         .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.05em; }
         .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 2rem; font-size: 0.85rem; transition: color 0.3s; }
         .nav-links a:hover { color: var(--text-main); }
-        @media (max-width: 768px) { .nav-links { display: none; } } /* Ocultar links en mobile por simplicidad */
+        @media (max-width: 768px) { .nav-links { display: none; } }
 
-        /* Hero */
-        .hero-title { font-size: clamp(3.5rem, 10vw, 8rem); font-weight: 800; line-height: 1; letter-spacing: -0.05em; margin-bottom: 0.5rem; }
-        .hero-title span { color: var(--text-muted); }
-        .hero-subtitle { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 300; color: var(--text-main); margin-bottom: 2rem; }
+        /* Cambio de Hero Title para que sea todo del mismo color */
+        .hero-title { font-size: clamp(3.5rem, 10vw, 8rem); font-weight: 800; line-height: 1; letter-spacing: -0.05em; margin-bottom: 0.5rem; color: var(--text-main); }
+        .hero-subtitle { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 300; color: var(--text-muted); margin-bottom: 2rem; }
 
-        /* Grillas */
         .grid-2 { display: grid; grid-template-columns: 1fr; gap: 4rem; }
         @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
         
-        /* Skills Tags */
         .stack-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
         .tag { background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; transition: all 0.3s; }
         .tag:hover { border-color: var(--text-main); background: rgba(255,255,255,0.1); }
 
-        /* Progress Bar (Académico) */
         .progress-container { width: 100%; background: rgba(255,255,255,0.05); height: 8px; border-radius: 4px; overflow: hidden; margin-top: 1rem; }
         .progress-bar { height: 100%; background: var(--text-main); width: 0%; transition: width 1.5s ease-in-out; }
 
-        /* Proyectos */
         .project-card { display: flex; flex-direction: column; gap: 1.5rem; padding: 3rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .project-card:last-child { border-bottom: none; }
         .project-header { display: flex; flex-direction: column; gap: 0.5rem; }
@@ -71,14 +63,12 @@
         .store-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: transparent; border: 1px solid var(--border-light); color: var(--text-main); text-decoration: none; font-size: 0.8rem; border-radius: 4px; transition: all 0.3s; }
         .store-btn:hover { background: var(--text-main); color: var(--bg-dark); }
 
-        /* Formación (Cursos) */
         .course-list { display: flex; flex-direction: column; }
         .course-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; border-bottom: 1px solid var(--border-light); transition: padding 0.3s; }
         .course-item:hover { padding-left: 1rem; border-bottom-color: var(--border-hover); }
         .course-title { font-size: 1.1rem; font-weight: 400; }
         .course-author { color: var(--text-muted); font-size: 0.85rem; }
 
-        /* Contacto */
         .contact-form { display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem; }
         .contact-form input, .contact-form textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border-light); color: var(--text-main); padding: 1rem 0; font-family: 'Inter', sans-serif; font-size: 1.2rem; outline: none; transition: border-color 0.3s; }
         .contact-form input:focus, .contact-form textarea:focus { border-bottom-color: var(--text-main); }
@@ -106,10 +96,10 @@
         
         <section id="inicio" style="border-bottom: none; padding-bottom: 4rem;">
             <p class="mono text-xs text-muted mb-4">Ingeniería en Sistemas de Información</p>
-            <h1 class="hero-title">BRUNO <span>PINI.</span></h1>
-            <h2 class="hero-subtitle">Software Engineer & Tech Lead</h2>
+            <h1 class="hero-title">BRUNO PINI.</h1>
+            <h2 class="hero-subtitle">Frontend & Mobile Developer</h2>
             <p class="text-muted" style="max-width: 700px; font-size: 1.2rem; margin-top: 2rem;">
-                Construyo soluciones tecnológicas end-to-end. Me involucro en todo el ciclo de vida del producto: desde la investigación y lógica de negocio, hasta el desarrollo Fullstack, integraciones DevOps y el liderazgo de equipos.
+                Especializado en transformar requerimientos y diseños complejos en aplicaciones escalables. Opero dentro de equipos ágiles garantizando entregas precisas, código limpio y una experiencia de usuario impecable.
             </p>
         </section>
 
@@ -117,12 +107,12 @@
             <span class="section-label mono">01 // Perfil Profesional</span>
             <div class="grid-2">
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 300; margin-bottom: 1.5rem;">Resolución integral: del código al negocio.</h2>
+                    <h2 style="font-size: 2rem; font-weight: 300; margin-bottom: 1.5rem;">Ejecución precisa y trabajo en equipo.</h2>
                     <p class="text-muted mb-4">
-                        Soy un desarrollador todoterreno. No me limito a una sola etapa del desarrollo; me meto de lleno en la investigación, la arquitectura de software, el despliegue y el liderazgo. Estoy acostumbrado a tomar un requerimiento de negocio puro y transformarlo en un sistema robusto, escalable y en producción.
+                        Mi día a día consiste en integrarme en ecosistemas ágiles (gestionando flujos en plataformas como ClickUp), analizar requerimientos técnicos y convertirlos en código funcional. Durante mi trayectoria me especialicé como desarrollador de interfaces y aplicaciones móviles, trabajando codo a codo con equipos multidisciplinarios para asegurar que el lado del cliente funcione a la perfección.
                     </p>
                     <p class="text-muted">
-                        Tengo experiencia real y comprobable liderando proyectos complejos: manejando bases de datos, APIs financieras de terceros, garantizando la seguridad de la infraestructura y asegurando que cada release aporte valor directo a la compañía. Si hay un problema técnico o estratégico, lo resuelvo.
+                        Gracias a mi experiencia resolviendo tickets complejos y llevando aplicaciones a producción (como flujos de pago PIX/Boleto en el mercado brasileño), recientemente comencé a asumir responsabilidades de liderazgo en mi equipo. Esto me permite no solo ejecutar tareas con precisión, sino también proponer mejoras proactivas y guiar a mis compañeros para elevar la calidad del código.
                     </p>
                 </div>
                 <div>
@@ -135,7 +125,6 @@
                         <span class="tag">Node.js</span>
                         <span class="tag">SQL</span>
                         <span class="tag">MongoDB</span>
-                        <span class="tag">DevOps / CI-CD</span>
                         <span class="tag">Firebase</span>
                         <span class="tag">Supabase</span>
                         <span class="tag">Figma</span>
@@ -165,7 +154,7 @@
                     <div class="progress-container">
                         <div class="progress-bar" id="univ-progress"></div>
                     </div>
-                    <p class="text-muted" style="font-size: 0.9rem; margin-top: 1rem;">Cursando el último año de la carrera, combinando la formación teórica y de arquitectura de sistemas con la práctica laboral diaria.</p>
+                    <p class="text-muted" style="font-size: 0.9rem; margin-top: 1rem;">Cursando el último año de la carrera, combinando la formación teórica de ingeniería con la práctica laboral diaria en la industria.</p>
                 </div>
             </div>
         </section>
@@ -180,7 +169,7 @@
                     <p class="mono text-xs text-muted" style="border-left: 2px solid var(--border-light); padding-left: 1rem;">Marketplace Agropecuario · Web & Mobile</p>
                 </div>
                 <p class="text-muted max-w-3xl">
-                    Desarrollo integral de la plataforma web y aplicación móvil para el marketplace de TodoAgro. Responsable de la arquitectura Frontend/Mobile, configuración DevOps para despliegues, monitoreo de KPIs y diseño de flujos orientados a la conversión de usuarios.
+                    Fui parte clave del equipo de desarrollo de la plataforma web y la aplicación móvil de TodoAgro. Mi trabajo se centró en la creación de interfaces, la implementación de requerimientos ágiles, y asegurar que la experiencia de usuario y los flujos de registro funcionen de manera óptima en producción.
                 </p>
                 <div class="store-links mono">
                     <a href="https://todoagro.com.br/" target="_blank" class="store-btn">🌐 Ver Web</a>
@@ -196,7 +185,7 @@
                     <p class="mono text-xs text-muted" style="border-left: 2px solid var(--border-light); padding-left: 1rem;">Billetera Virtual / Fintech · Web & Mobile</p>
                 </div>
                 <p class="text-muted max-w-3xl">
-                    Desarrollo de billetera virtual para el mercado brasileño. Lideré la implementación completa del flujo de pagos (PIX, Boleto bancario) garantizando altos estándares de seguridad técnica y arquitectónica. Gestión de conexiones de red y publicación nativa en stores.
+                    Colaboré en el desarrollo de esta billetera virtual orientada al mercado brasileño. Tuve un rol central en la programación del front-end y mobile, trabajando activamente en la integración de flujos de pago complejos (como PIX y Boleto bancario) cuidando la seguridad y usabilidad.
                 </p>
                 <div class="store-links mono">
                     <a href="https://agrocarteira.com.br/" target="_blank" class="store-btn">🌐 Ver Web</a>
@@ -212,7 +201,7 @@
                     <p class="mono text-xs text-muted" style="border-left: 2px solid var(--border-light); padding-left: 1rem;">Plataforma SaaS · Sistema de Gestión</p>
                 </div>
                 <p class="text-muted max-w-3xl">
-                    Plataforma que conecta profesionales fonoaudiólogos con pacientes. Diseñé un modelo SaaS enfocado en el control de accesos y privacidad de datos, donde el profesional gestiona su entorno clínico de forma integral y el paciente accede mediante credenciales seguras.
+                    Plataforma que conecta profesionales con pacientes. Colaboré en el diseño de un modelo SaaS enfocado en el control de accesos, donde el profesional gestiona su entorno clínico y el paciente accede mediante credenciales seguras. Integré la lógica de negocio requerida por la cátedra en una interfaz funcional.
                 </p>
                 <div class="store-links mono">
                     <a href="https://tpi-fono-frontend.vercel.app/" target="_blank" class="store-btn">🌐 Ver Plataforma</a>
@@ -222,7 +211,7 @@
 
         <section id="formacion">
             <span class="section-label mono">04 // Formación Continua (2023 - 2026)</span>
-            <p class="text-muted mb-4">Mantener la arquitectura al día requiere conocimiento constante. Capacitaciones complementarias a la ingeniería:</p>
+            <p class="text-muted mb-4">La tecnología avanza rápido, mi stack también. Capacitaciones complementarias a mi carrera:</p>
             
             <div class="course-list">
                 <div class="course-item">
@@ -281,7 +270,7 @@
             <div class="grid-2">
                 <div>
                     <h2 style="font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem;">¿Hablamos de código?</h2>
-                    <p class="text-muted mb-4">Si estás buscando un ingeniero que entienda el negocio, cuide la arquitectura y entregue resultados reales, mandame un mensaje.</p>
+                    <p class="text-muted mb-4">Si estás buscando un desarrollador Frontend/Mobile que sepa integrarse rápido a un equipo ágil y resolver tareas complejas, mandame un mensaje.</p>
                     <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
                         <a href="mailto:bpini44@gmail.com" class="mono text-main" style="text-decoration: none;">✉ bpini44@gmail.com</a>
                         <a href="https://www.linkedin.com/in/bruno-pini-632757296/" target="_blank" class="mono text-main" style="text-decoration: none;">🔗 LinkedIn / Bruno Pini</a>
