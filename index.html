@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bruno Pini | Portfolio ISI</title>
+    <title>Bruno Pini | Software Engineer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -45,8 +45,9 @@
         @media (max-width: 768px) { .nav-links { display: none; } } /* Ocultar links en mobile por simplicidad */
 
         /* Hero */
-        .hero-title { font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1; letter-spacing: -0.04em; margin-bottom: 1.5rem; }
-        .hero-title span { font-weight: 800; }
+        .hero-title { font-size: clamp(3.5rem, 10vw, 8rem); font-weight: 800; line-height: 1; letter-spacing: -0.05em; margin-bottom: 0.5rem; }
+        .hero-title span { color: var(--text-muted); }
+        .hero-subtitle { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 300; color: var(--text-main); margin-bottom: 2rem; }
 
         /* Grillas */
         .grid-2 { display: grid; grid-template-columns: 1fr; gap: 4rem; }
@@ -84,15 +85,13 @@
         .btn-submit { background: var(--text-main); color: var(--bg-dark); border: none; padding: 1rem 2rem; font-weight: 600; cursor: pointer; transition: transform 0.3s; margin-top: 1rem; }
         .btn-submit:hover { transform: translateY(-3px); }
 
-        /* Utilidades SVGs */
-        .icon { width: 16px; height: 16px; fill: currentColor; }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="nav-content">
-            <div class="logo">BRUNO PINI.</div>
+            <div class="logo">BP.</div>
             <div class="nav-links mono">
                 <a href="#perfil">01.Perfil</a>
                 <a href="#academico">02.Académico</a>
@@ -103,26 +102,27 @@
         </div>
     </nav>
 
-    <div class="container" style="padding-top: 120px;">
+    <div class="container" style="padding-top: 140px;">
         
         <section id="inicio" style="border-bottom: none; padding-bottom: 4rem;">
-            <p class="mono text-xs text-muted mb-4">Ingeniería en Sistemas // Frontend & Mobile</p>
-            <h1 class="hero-title">Desarrollo de software<br>con enfoque en <span>UX y Seguridad.</span></h1>
-            <p class="text-muted" style="max-width: 600px; font-size: 1.2rem; margin-top: 2rem;">
-                Creo aplicaciones escalables poniéndome siempre del lado del usuario. Transformo requerimientos de negocio en experiencias eficientes y seguras.
+            <p class="mono text-xs text-muted mb-4">Ingeniería en Sistemas de Información</p>
+            <h1 class="hero-title">BRUNO <span>PINI.</span></h1>
+            <h2 class="hero-subtitle">Software Engineer & Tech Lead</h2>
+            <p class="text-muted" style="max-width: 700px; font-size: 1.2rem; margin-top: 2rem;">
+                Construyo soluciones tecnológicas end-to-end. Me involucro en todo el ciclo de vida del producto: desde la investigación y lógica de negocio, hasta el desarrollo Fullstack, integraciones DevOps y el liderazgo de equipos.
             </p>
         </section>
 
         <section id="perfil">
-            <span class="section-label mono">01 // Marca Personal e Ikigai</span>
+            <span class="section-label mono">01 // Perfil Profesional</span>
             <div class="grid-2">
                 <div>
-                    <h2 style="font-size: 2rem; font-weight: 300; margin-bottom: 1.5rem;">Optimizando procesos a través de la empatía técnica.</h2>
+                    <h2 style="font-size: 2rem; font-weight: 300; margin-bottom: 1.5rem;">Resolución integral: del código al negocio.</h2>
                     <p class="text-muted mb-4">
-                        Soy un desarrollador apasionado por el trabajo en equipo y el nivel de detalle. Mi Ikigai profesional se basa en cruzar soluciones técnicas con la experiencia humana. Soy especialmente bueno detectando fallas de seguridad y mejorando la experiencia de usuario (UX) porque diseño y programo poniéndome en los zapatos de quien va a usar el sistema.
+                        Soy un desarrollador todoterreno. No me limito a una sola etapa del desarrollo; me meto de lleno en la investigación, la arquitectura de software, el despliegue y el liderazgo. Estoy acostumbrado a tomar un requerimiento de negocio puro y transformarlo en un sistema robusto, escalable y en producción.
                     </p>
                     <p class="text-muted">
-                        Tengo experiencia real operando en el mercado brasileño, construyendo de cero flujos complejos de pago (como PIX o Boletos) e integrando APIs de Fintechs y Google.
+                        Tengo experiencia real y comprobable liderando proyectos complejos: manejando bases de datos, APIs financieras de terceros, garantizando la seguridad de la infraestructura y asegurando que cada release aporte valor directo a la compañía. Si hay un problema técnico o estratégico, lo resuelvo.
                     </p>
                 </div>
                 <div>
@@ -135,6 +135,7 @@
                         <span class="tag">Node.js</span>
                         <span class="tag">SQL</span>
                         <span class="tag">MongoDB</span>
+                        <span class="tag">DevOps / CI-CD</span>
                         <span class="tag">Firebase</span>
                         <span class="tag">Supabase</span>
                         <span class="tag">Figma</span>
@@ -179,7 +180,7 @@
                     <p class="mono text-xs text-muted" style="border-left: 2px solid var(--border-light); padding-left: 1rem;">Marketplace Agropecuario · Web & Mobile</p>
                 </div>
                 <p class="text-muted max-w-3xl">
-                    Desarrollo integral de la plataforma web y aplicación móvil para el marketplace de TodoAgro. Responsable de la creación visual, configuración DevOps para despliegues, monitoreo de KPIs y diseño de flujos de registro y compra orientados a la conversión.
+                    Desarrollo integral de la plataforma web y aplicación móvil para el marketplace de TodoAgro. Responsable de la arquitectura Frontend/Mobile, configuración DevOps para despliegues, monitoreo de KPIs y diseño de flujos orientados a la conversión de usuarios.
                 </p>
                 <div class="store-links mono">
                     <a href="https://todoagro.com.br/" target="_blank" class="store-btn">🌐 Ver Web</a>
@@ -195,7 +196,7 @@
                     <p class="mono text-xs text-muted" style="border-left: 2px solid var(--border-light); padding-left: 1rem;">Billetera Virtual / Fintech · Web & Mobile</p>
                 </div>
                 <p class="text-muted max-w-3xl">
-                    Desarrollo de billetera virtual para el mercado brasileño. Lideré la implementación completa del flujo de pagos (PIX, Boleto bancario) garantizando altos estándares de seguridad y una experiencia de usuario sin fricciones. Gestión de conexiones de red y publicación en stores.
+                    Desarrollo de billetera virtual para el mercado brasileño. Lideré la implementación completa del flujo de pagos (PIX, Boleto bancario) garantizando altos estándares de seguridad técnica y arquitectónica. Gestión de conexiones de red y publicación nativa en stores.
                 </p>
                 <div class="store-links mono">
                     <a href="https://agrocarteira.com.br/" target="_blank" class="store-btn">🌐 Ver Web</a>
@@ -211,7 +212,7 @@
                     <p class="mono text-xs text-muted" style="border-left: 2px solid var(--border-light); padding-left: 1rem;">Plataforma SaaS · Sistema de Gestión</p>
                 </div>
                 <p class="text-muted max-w-3xl">
-                    Plataforma que conecta profesionales fonoaudiólogos con pacientes. Diseñé un modelo SaaS donde el profesional paga una suscripción para gestionar pacientes, asignar ejercicios y realizar seguimientos. Los pacientes acceden mediante credenciales seguras provistas por su médico. Enfoque en control de accesos y privacidad de datos.
+                    Plataforma que conecta profesionales fonoaudiólogos con pacientes. Diseñé un modelo SaaS enfocado en el control de accesos y privacidad de datos, donde el profesional gestiona su entorno clínico de forma integral y el paciente accede mediante credenciales seguras.
                 </p>
                 <div class="store-links mono">
                     <a href="https://tpi-fono-frontend.vercel.app/" target="_blank" class="store-btn">🌐 Ver Plataforma</a>
@@ -221,7 +222,7 @@
 
         <section id="formacion">
             <span class="section-label mono">04 // Formación Continua (2023 - 2026)</span>
-            <p class="text-muted mb-4">Mantener el código actualizado requiere mantener el conocimiento actualizado. Capacitaciones complementarias a la ingeniería:</p>
+            <p class="text-muted mb-4">Mantener la arquitectura al día requiere conocimiento constante. Capacitaciones complementarias a la ingeniería:</p>
             
             <div class="course-list">
                 <div class="course-item">
@@ -280,7 +281,7 @@
             <div class="grid-2">
                 <div>
                     <h2 style="font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem;">¿Hablamos de código?</h2>
-                    <p class="text-muted mb-4">Si estás buscando un desarrollador que entienda el negocio, cuide la seguridad y escriba código limpio, mandame un mensaje.</p>
+                    <p class="text-muted mb-4">Si estás buscando un ingeniero que entienda el negocio, cuide la arquitectura y entregue resultados reales, mandame un mensaje.</p>
                     <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
                         <a href="mailto:bpini44@gmail.com" class="mono text-main" style="text-decoration: none;">✉ bpini44@gmail.com</a>
                         <a href="https://www.linkedin.com/in/bruno-pini-632757296/" target="_blank" class="mono text-main" style="text-decoration: none;">🔗 LinkedIn / Bruno Pini</a>
