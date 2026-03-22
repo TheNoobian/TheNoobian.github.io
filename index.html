@@ -1,182 +1,356 @@
 <!DOCTYPE html>
 <html lang="es" style="scroll-behavior: smooth;">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bruno Pini | Fullstack Developer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bruno Pini | Fullstack Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Paleta de colores: Deep Slate y Neon Cyan */
+        :root {
+            --bg-main: #0f172a;      /* Azul muy oscuro */
+            --bg-card: rgba(30, 41, 59, 0.7); /* Tarjetas semi transparentes */
+            --text-main: #f8fafc;    /* Blanco puro */
+            --text-muted: #94a3b8;   /* Gris azulado */
+            --accent: #0ea5e9;       /* Celeste brillante */
+            --accent-glow: rgba(14, 165, 233, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<style>
-/* (TODO tu CSS EXACTAMENTE IGUAL, no cambia nada) */
-:root {
-    --bg-main: #0f172a;
-    --bg-card: rgba(30, 41, 59, 0.7);
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
-    --accent: #0ea5e9;
-    --accent-glow: rgba(14, 165, 233, 0.3);
-    --border-light: rgba(255, 255, 255, 0.08);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{background-color:var(--bg-main);color:var(--text-main);font-family:'Outfit',sans-serif;line-height:1.7;}
-.mono{font-family:'Fira Code',monospace;}
-.container{max-width:1100px;margin:0 auto;padding:0 2rem;}
-section{padding:7rem 0;}
-nav{position:fixed;top:0;width:100%;background:rgba(15,23,42,.7);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-light);z-index:100;}
-.nav-content{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem;max-width:1100px;margin:0 auto;}
-.logo{font-weight:800;font-size:1.5rem;}
-.logo span{color:var(--accent);}
-.nav-links{display:flex;gap:2rem;}
-.nav-links a{color:var(--text-muted);text-decoration:none;}
-.lang-btn{cursor:pointer;background:transparent;border:1px solid var(--accent);color:var(--accent);padding:.4rem .8rem;border-radius:6px;}
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:60px;}
-.hero-title{font-size:clamp(3rem,8vw,6rem);}
-.hero-subtitle{color:var(--text-muted);}
-.btn-submit{background:var(--accent);color:#000;padding:1rem;border-radius:8px;text-decoration:none;}
-.btn-link{color:white;text-decoration:none;border:1px solid rgba(255,255,255,.1);padding:.5rem 1rem;border-radius:6px;}
-.section-title{font-size:2rem;margin-bottom:2rem;}
-.reveal{opacity:1;}
-</style>
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.05), transparent 25%), 
+                              radial-gradient(circle at 85% 30%, rgba(14, 165, 233, 0.05), transparent 25%);
+        }
+
+        .mono { font-family: 'Fira Code', monospace; }
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+        section { padding: 7rem 0; position: relative; }
+        
+        /* Navbar Glassmorphism */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-light); z-index: 100; transition: all 0.3s; }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; max-width: 1100px; margin: 0 auto; }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: 1px; color: var(--text-main); }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+
+        /* Titles & Text */
+        .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; position: relative; display: inline-block; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50px; height: 4px; background: var(--accent); border-radius: 2px; }
+        
+        /* Hero Section */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 60px; }
+        .hero-badge { display: inline-block; background: rgba(14, 165, 233, 0.1); color: var(--accent); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem; border: 1px solid var(--accent-glow); }
+        .hero-title { font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
+        .hero-title span { background: linear-gradient(135deg, #0ea5e9, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 300; color: var(--text-muted); max-width: 600px; }
+
+        /* Cards Style (Glassmorphism) */
+        .glass-card { background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border-light); border-radius: 16px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; }
+        .glass-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 15px var(--accent-glow); border-color: rgba(14, 165, 233, 0.3); }
+
+        /* Layout Grid */
+        .grid-2 { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+        @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+
+        /* Skills Tags */
+        .tags-container { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+        .tag-tech { background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); padding: 0.5rem 1.2rem; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s; }
+        .tag-tech:hover { background: var(--accent); color: var(--bg-main); border-color: var(--accent); transform: scale(1.05); }
+
+        /* --- NUEVO SISTEMA BACKGROUND --- */
+        .background-dashboard { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+        @media (min-width: 768px) { .background-dashboard { grid-template-columns: auto 1fr; gap: 4rem; } }
+        
+        .circle-chart { position: relative; width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(var(--accent) 0deg, rgba(255,255,255,0.05) 0deg); display: flex; align-items: center; justify-content: center; transition: background 1.5s ease; }
+        .circle-inner { width: 130px; height: 130px; background: var(--bg-card); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; text-align: center; }
+        .circle-inner span { font-size: 1.5rem; font-weight: 800; color: var(--text-main); line-height: 1; }
+        .circle-inner small { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+
+        /* Proyectos */
+        .project-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        .project-content h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .project-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .btn-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-main); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 0.5rem 1rem; border-radius: 6px; background: rgba(255,255,255,0.05); transition: all 0.3s; }
+        .btn-link:hover { background: var(--accent); color: var(--bg-main); }
+        .btn-cv { background: rgba(14, 165, 233, 0.15); border: 1px solid var(--accent); color: var(--accent); }
+        .btn-cv:hover { background: var(--accent); color: var(--bg-main); box-shadow: 0 0 15px var(--accent-glow); }
+
+        /* Cursos / Formación */
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .course-card { padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light); background: linear-gradient(145deg, rgba(255,255,255,0.02), transparent); transition: all 0.3s; }
+        .course-card:hover { border-color: var(--accent); background: rgba(14, 165, 233, 0.05); }
+        .course-card h4 { font-size: 1rem; margin-bottom: 0.5rem; }
+
+        /* Contacto */
+        .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+        .contact-form input, .contact-form textarea { width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--border-light); border-radius: 8px; color: var(--text-main); padding: 1rem; font-family: 'Outfit', sans-serif; font-size: 1rem; outline: none; transition: border-color 0.3s; }
+        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-glow); }
+        .btn-submit { background: var(--accent); color: var(--bg-main); border: none; padding: 1rem; border-radius: 8px; font-weight: 800; font-size: 1rem; cursor: pointer; transition: all 0.3s; width: fit-content; }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-glow); }
+
+        /* Animaciones al hacer scroll */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        .cv-highlight { color: var(--text-main); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.5rem; background: rgba(14, 165, 233, 0.1); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--accent); font-weight: 600; font-size: 1.1rem; transition: all 0.3s; }
+        .cv-highlight:hover { background: var(--accent); color: var(--bg-main); box-shadow: 0 5px 20px var(--accent-glow); transform: translateY(-3px); }
+    </style>
 </head>
-
 <body>
 
-<nav>
-    <div class="nav-content">
-        <div class="logo">BRUNO PINI<span>.DEV</span></div>
-
-        <div class="nav-links mono">
-            <a href="#perfil" data-i18n="nav_profile">&lt;Perfil/&gt;</a>
-            <a href="#proyectos" data-i18n="nav_projects">&lt;Proyectos/&gt;</a>
-            <a href="#background" data-i18n="nav_background">&lt;Background/&gt;</a>
-            <a href="#contacto" data-i18n="nav_contact">&lt;Contacto/&gt;</a>
-
-            <button class="lang-btn" onclick="toggleLang()">EN</button>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">BRUNO PINI<span>.DEV</span></div>
+            <div class="nav-links mono">
+                <a href="#perfil">&lt;Perfil/&gt;</a>
+                <a href="#proyectos">&lt;Proyectos/&gt;</a>
+                <a href="#background">&lt;Background/&gt;</a>
+                <a href="#contacto">&lt;Contacto/&gt;</a>
+            </div>
         </div>
+    </nav>
+
+    <div class="container">
+        
+        <section id="inicio" class="hero reveal">
+            <div>
+                <div class="hero-badge mono">Fullstack Developer</div>
+                <h1 class="hero-title">Soluciones completas<br><span>desde cero.</span></h1>
+                <p class="hero-subtitle">Capacidad para estructurar bases de datos, levantar APIs y crear interfaces fluidas (Web y Mobile) asegurando el funcionamiento eficiente de todo el sistema.</p>
+                <div style="margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#proyectos" class="btn-submit" style="text-decoration: none; display: inline-block;">Ver Proyectos</a>
+                    <a href="Bruno_Pini_CV.pdf" target="_blank" class="btn-link btn-cv">📄 Descargar CV</a>
+                    <a href="LINK_A_TU_VIDEO" target="_blank" class="btn-link" style="border: 1px solid var(--accent); color: var(--accent);">🎥 Video Presentación</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="perfil" class="reveal">
+            <h2 class="section-title">Perfil Técnico</h2>
+            <div class="grid-2">
+                <div class="glass-card">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Visión 360° del Software</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                        Aunque actualmente mi enfoque principal está en el desarrollo Frontend y Mobile dentro de equipos ágiles (ClickUp/Jira), poseo un perfil Fullstack. Esto me permite no solo ejecutar tareas específicas en la interfaz, sino entender cómo la arquitectura de datos, la seguridad y el backend interactúan para hacer que el producto final sea realmente sólido.
+                    </p>
+                    <p style="color: var(--text-muted);">
+                        Me destaco por tomar proyectos desde sus cimientos y llevarlos hasta un funcionamiento eficiente en producción, siempre priorizando la escalabilidad del código y la mejor experiencia posible para el usuario final.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="mono" style="color: var(--accent); margin-bottom: 1rem;">> tech_stack.json</h3>
+                    <div class="tags-container mono">
+                        <span class="tag-tech">React / Next.js</span>
+                        <span class="tag-tech">React Native</span>
+                        <span class="tag-tech">TypeScript</span>
+                        <span class="tag-tech">Node.js</span>
+                        <span class="tag-tech">SQL / PostgreSQL</span>
+                        <span class="tag-tech">MongoDB</span>
+                        <span class="tag-tech">Firebase</span>
+                        <span class="tag-tech">Supabase</span>
+                        <span class="tag-tech">Figma</span>
+                        <span class="tag-tech">Integración APIs Fintech</span>
+                        <span class="tag-tech">n8n (Agentes)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos" class="reveal">
+            <h2 class="section-title">En Producción</h2>
+            
+            <div class="project-grid">
+                <div class="glass-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <span class="mono" style="color: var(--accent); font-size: 0.85rem;">[ Cliente: MACROINTELL ]</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>TodoAgro Marketplace</h3>
+                        <p>Desarrollo activo de la plataforma web y la app móvil. Actualmente trabajo creando y manteniendo interfaces sólidas y fluidas. Mi enfoque asegura que la experiencia del usuario, desde la búsqueda hasta la finalización de la compra, opere sin interrupciones en el entorno de producción real.</p>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="https://todoagro.com.br/" target="_blank" class="btn-link">🌐 Web</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.todoagro.todoagroapp" target="_blank" class="btn-link">▶ Android</a>
+                            <a href="https://apps.apple.com/ar/app/todoagro/id6740921180" target="_blank" class="btn-link">🍎 iOS</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <span class="mono" style="color: var(--accent); font-size: 0.85rem;">[ Cliente: MACROINTELL Brasil ]</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Agrocarteira (Billetera Virtual)</h3>
+                        <p>Desarrollo actual Frontend y Mobile para esta plataforma Fintech. A diferencia de un e-commerce tradicional, aquí el desafío principal es manejar dinero real de los usuarios y garantizar la máxima seguridad transaccional al integrar flujos de pago altamente sensibles (como PIX y Boleto) para el mercado brasileño.</p>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="https://agrocarteira.com.br/" target="_blank" class="btn-link">🌐 Web</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.todoagro.agrocarteiraapp" target="_blank" class="btn-link">▶ Android</a>
+                            <a href="https://apps.apple.com/ar/app/agrocarteira/id6740410029" target="_blank" class="btn-link">🍎 iOS</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <span class="mono" style="color: var(--text-muted); font-size: 0.85rem;">[ Desarrollo Independiente ]</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>VocalPro (SaaS Clínico)</h3>
+                        <p>Desarrollo Fullstack de una plataforma SaaS para fonoaudiólogos. Implementé un sistema integral con control de accesos basado en roles, bases de datos relacionales y autenticación segura para garantizar la privacidad de los pacientes y facilitar la gestión del entorno clínico al profesional.</p>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="https://tpi-fono-frontend.vercel.app/" target="_blank" class="btn-link">🌐 Ver Proyecto</a>
+                            <a href="https://github.com/TheNoobian/TPI-Fono-Frontend" target="_blank" class="btn-link">💻 Repo Frontend</a>
+                            <a href="https://github.com/TheNoobian/TPI-Fono-BackTend" target="_blank" class="btn-link">💻 Repo Backend</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="background" class="reveal">
+            <h2 class="section-title">Background & Certificaciones</h2>
+            
+            <div class="glass-card background-dashboard" style="margin-bottom: 3rem;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <div class="circle-chart" id="circleProgress">
+                        <div class="circle-inner">
+                            <span id="percentText">5to</span>
+                            <small>Año en Curso</small>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Ingeniería en Sistemas</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">Cursando la etapa final de la carrera, consolidando conocimientos avanzados en arquitectura de software, bases de datos y gestión de proyectos tecnológicos.</p>
+                    <span class="tag-tech mono" style="background: rgba(14, 165, 233, 0.1); border: none; color: var(--accent);">Estudiante Avanzado</span>
+                </div>
+            </div>
+
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Cursos completados recientemente para mantener el stack actualizado (y más por venir):</p>
+            
+            <div class="course-grid">
+                <div class="course-card">
+                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span>
+                    <h4>React Native CLI para IOS y Android</h4>
+                </div>
+                <div class="course-card">
+                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span>
+                    <h4>React: De cero a experto</h4>
+                </div>
+                <div class="course-card">
+                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Rodrigo Morales</span>
+                    <h4>Máster en Typescript Nivel Profesional</h4>
+                </div>
+                <div class="course-card">
+                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span>
+                    <h4>Node: De cero a experto</h4>
+                </div>
+                <div class="course-card">
+                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy</span>
+                    <h4>Patrones de Diseño en JS y TypeScript</h4>
+                </div>
+                <div class="course-card">
+                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Leifer Mendez</span>
+                    <h4>AWS Curso Básico para desarrolladores</h4>
+                </div>
+                <div class="course-card">
+                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Bonnie Schulkin</span>
+                    <h4>React Server State (TanStack Query)</h4>
+                </div>
+                <div class="course-card">
+                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Juan Jose Ortiz</span>
+                    <h4>React Hooks, Redux y Material.UI</h4>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="reveal" style="padding-bottom: 3rem;">
+            <div class="glass-card grid-2">
+                <div>
+                    <h2 class="section-title" style="margin-bottom: 1.5rem;">Contacto</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">Si buscás un desarrollador con perfil Fullstack capaz de resolver problemas complejos y escribir código escalable, dejame un mensaje.</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <a href="mailto:bpini44@gmail.com" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;">
+                            <span style="background: rgba(255,255,255,0.1); padding: 0.5rem; border-radius: 8px;">📧</span> bpini44@gmail.com
+                        </a>
+                        <a href="https://www.linkedin.com/in/bruno-pini-632757296/" target="_blank" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;">
+                            <span style="background: rgba(255,255,255,0.1); padding: 0.5rem; border-radius: 8px;">💼</span> LinkedIn Profile
+                        </a>
+                        <a href="https://github.com/TheNoobian" target="_blank" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;">
+                            <span style="background: rgba(255,255,255,0.1); padding: 0.5rem; border-radius: 8px;">💻</span> GitHub Profile
+                        </a>
+                        
+                        <a href="Bruno_Pini_CV.pdf" target="_blank" class="cv-highlight">
+                            📄 Descargar Currículum Vitae (.PDF)
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <form action="https://formsubmit.co/bpini44@gmail.com" method="POST" class="contact-form">
+                        <input type="hidden" name="_next" value="https://thenoobian.github.io/">
+                        <input type="hidden" name="_subject" value="¡Mensaje desde el Portfolio!">
+                        
+                        <input type="text" name="name" placeholder="Tu Nombre" required>
+                        <input type="email" name="email" placeholder="Tu Email" required>
+                        <textarea name="message" rows="4" placeholder="¿En qué puedo ayudarte?" required></textarea>
+                        
+                        <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer style="text-align: center; padding: 2rem 0; color: var(--text-muted); border-top: 1px solid var(--border-light); margin-top: 2rem;">
+            <p class="mono" style="font-size: 0.85rem;">Fecha de creación: 22 de Marzo de 2026 | © Bruno Pini.</p>
+        </footer>
+
     </div>
-</nav>
 
-<div class="container">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const circleChart = document.getElementById("circleProgress");
+            let animated = false;
 
-<section class="hero">
-<div>
-    <div class="hero-badge mono">Fullstack Developer</div>
+            const reveals = document.querySelectorAll(".reveal");
 
-    <h1 class="hero-title" data-i18n="hero_title">
-        Soluciones completas desde cero.
-    </h1>
+            function revealOnScroll() {
+                let windowHeight = window.innerHeight;
+                let elementVisible = 150;
 
-    <p class="hero-subtitle" data-i18n="hero_sub">
-        Capacidad para estructurar bases de datos, levantar APIs y crear interfaces fluidas.
-    </p>
+                reveals.forEach(reveal => {
+                    let elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add("active");
+                    }
+                });
 
-    <div style="margin-top:2rem;">
-        <a href="#proyectos" class="btn-submit" data-i18n="btn_projects">Ver Proyectos</a>
+                if (!animated && circleChart) {
+                    let circleTop = circleChart.getBoundingClientRect().top;
+                    if (circleTop < windowHeight - elementVisible) {
+                        animated = true;
+                        circleChart.style.background = `conic-gradient(var(--accent) 360deg, rgba(255,255,255,0.05) 360deg)`;
+                    }
+                }
+            }
 
-        <a href="Bruno_Pini_CV.pdf" target="_blank" class="btn-link" data-i18n="btn_cv">
-            Descargar CV
-        </a>
-
-        <a href="https://youtu.be/77CWF_XFLOo?si=pLXDjbUYzN0AwYoG" target="_blank" class="btn-link">
-            🎥 Video
-        </a>
-    </div>
-</div>
-</section>
-
-<section id="perfil">
-<h2 class="section-title" data-i18n="profile_title">Perfil Técnico</h2>
-
-<p data-i18n="profile_text">
-Perfil fullstack con experiencia en frontend y backend.
-</p>
-</section>
-
-<section id="proyectos">
-<h2 class="section-title" data-i18n="projects_title">Proyectos</h2>
-</section>
-
-<section id="contacto">
-<h2 class="section-title" data-i18n="contact_title">Contacto</h2>
-
-<form class="contact-form">
-    <input placeholder="Nombre" data-i18n-placeholder="input_name">
-    <input placeholder="Email" data-i18n-placeholder="input_email">
-    <textarea placeholder="Mensaje" data-i18n-placeholder="input_msg"></textarea>
-    <button class="btn-submit" data-i18n="btn_send">Enviar</button>
-</form>
-</section>
-
-</div>
-
-<script>
-let currentLang = "es";
-
-const translations = {
-    es: {
-        nav_profile: "<Perfil/>",
-        nav_projects: "<Proyectos/>",
-        nav_background: "<Background/>",
-        nav_contact: "<Contacto/>",
-
-        hero_title: "Soluciones completas desde cero.",
-        hero_sub: "Capacidad para estructurar bases de datos, levantar APIs y crear interfaces fluidas.",
-        btn_projects: "Ver Proyectos",
-        btn_cv: "Descargar CV",
-
-        profile_title: "Perfil Técnico",
-        profile_text: "Perfil fullstack con experiencia en frontend y backend.",
-
-        projects_title: "Proyectos",
-
-        contact_title: "Contacto",
-        btn_send: "Enviar",
-        input_name: "Tu Nombre",
-        input_email: "Tu Email",
-        input_msg: "¿En qué puedo ayudarte?"
-    },
-
-    en: {
-        nav_profile: "<Profile/>",
-        nav_projects: "<Projects/>",
-        nav_background: "<Background/>",
-        nav_contact: "<Contact/>",
-
-        hero_title: "End-to-end solutions from scratch.",
-        hero_sub: "Ability to structure databases, build APIs and create fluid interfaces.",
-        btn_projects: "View Projects",
-        btn_cv: "Download CV",
-
-        profile_title: "Technical Profile",
-        profile_text: "Fullstack profile with frontend and backend experience.",
-
-        projects_title: "Projects",
-
-        contact_title: "Contact",
-        btn_send: "Send",
-        input_name: "Your Name",
-        input_email: "Your Email",
-        input_msg: "How can I help you?"
-    }
-};
-
-function toggleLang() {
-    currentLang = currentLang === "es" ? "en" : "es";
-    document.querySelector(".lang-btn").innerText = currentLang === "es" ? "EN" : "ES";
-    applyTranslations();
-}
-
-function applyTranslations() {
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-        el.innerHTML = translations[currentLang][el.dataset.i18n];
-    });
-
-    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-        el.placeholder = translations[currentLang][el.dataset.i18nPlaceholder];
-    });
-}
-</script>
-
+            window.addEventListener("scroll", revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
 </body>
 </html>
