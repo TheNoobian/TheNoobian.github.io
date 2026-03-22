@@ -3,63 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Bruno Pini</title>
+    <title>Bruno Pini | Portfolio Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f4f9; }
-        header { text-align: center; margin-bottom: 40px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; margin-bottom: 5px; }
-        h2 { color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px; }
-        .section { margin-bottom: 30px; background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .btn { display: inline-block; background: #007bff; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 10px; font-weight: bold; }
-        .btn:hover { background: #0056b3; }
-        .footer { text-align: center; margin-top: 50px; font-size: 0.9em; color: #777; }
-        .contact-info a { color: #007bff; text-decoration: none; margin: 0 10px; }
-        .contact-info a:hover { text-decoration: underline; }
+        :root {
+            --bg-dark: #0a0a0a;
+            --text-main: #f5f5f5;
+            --text-muted: #a3a3a3;
+            --accent: #00ff9d; /* Un verde tech sutil para contrastar */
+            --border-light: rgba(255, 255, 255, 0.1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Utilidades tipográficas */
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .text-xs { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; }
+        .title-huge { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; }
+        .text-muted { color: var(--text-muted); }
+
+        /* Layout */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        section { padding: 100px 0; border-bottom: 1px solid var(--border-light); }
+        
+        /* Navbar */
+        nav { padding: 2rem 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); }
+        .logo { font-weight: 700; letter-spacing: -0.05em; font-size: 1.2rem; }
+        .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 2rem; font-size: 0.85rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Botones y Tags */
+        .tag { background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; background: white; color: black; padding: 0.8rem 1.5rem; text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: transform 0.3s; margin-top: 1rem; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-outline { background: transparent; color: white; border: 1px solid var(--border-light); }
+        .btn-outline:hover { background: rgba(255,255,255,0.05); }
+
+        /* Grillas de Proyectos */
+        .project-card { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 4rem; padding: 2rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-light); transition: border-color 0.3s; }
+        .project-card:hover { border-color: rgba(255,255,255,0.2); }
+        @media (min-width: 768px) { .project-card { grid-template-columns: 1fr 2fr; } }
+        
+        .project-meta span { display: block; margin-bottom: 0.5rem; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+
+        /* Grilla de Skills */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin-top: 3rem; }
+        .skill-item { padding: 1.5rem; border: 1px solid var(--border-light); text-align: center; background: rgba(255,255,255,0.01); transition: all 0.3s; }
+        .skill-item:hover { background: rgba(255,255,255,0.05); border-color: var(--accent); color: var(--accent); }
+
+        footer { padding: 4rem 0; text-align: center; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Bruno Pini</h1>
-        <p><strong>Estudiante Avanzado de Ingeniería en Sistemas | Desarrollador</strong></p>
-        <div class="contact-info">
-            <a href="mailto:tu_correo@email.com">tu_correo@email.com</a> | 
-            <a href="LINK_A_TU_LINKEDIN" target="_blank">LinkedIn</a> |
-            <a href="https://github.com/TheNoobian" target="_blank">GitHub</a>
-        </div>
-    </header>
+    <div class="container">
+        <nav>
+            <div class="logo">BP.</div>
+            <div class="nav-links mono">
+                <a href="#ikigai">01. Perfil</a>
+                <a href="#proyectos">02. Proyectos</a>
+                <a href="#cv">03. CV</a>
+            </div>
+        </nav>
 
-    <div class="section">
-        <h2>Sobre Mí</h2>
-        <p>Me apasiona resolver problemas complejos a través de la tecnología y el desarrollo de software. Como estudiante de Ingeniería en Sistemas, busco crear soluciones que no solo sean técnicamente sólidas, sino que aporten valor real a los usuarios y optimicen los procesos dentro de las organizaciones.</p>
-    </div>
+        <section id="hero" style="border-bottom: none; padding-top: 120px;">
+            <p class="mono text-xs text-muted" style="margin-bottom: 1rem;">Estudiante Avanzado ISI &nbsp;//&nbsp; Desarrollador</p>
+            <h1 class="title-huge">Frontend & Mobile<br><span style="color: var(--accent);">Developer.</span></h1>
+            <p class="text-muted" style="max-width: 600px; margin-top: 2rem; font-size: 1.1rem;">
+                Transformo requerimientos de negocio en experiencias de usuario escalables y de alto impacto. Especializado en el ecosistema mobile y web.
+            </p>
+        </section>
 
-    <div class="section">
-        <h2>Proyectos Destacados</h2>
-        <h3>📱 App Móvil para TodoAgro</h3>
-        <ul>
-            <li><strong>Descripción:</strong> Desarrollo de una aplicación móvil para la gestión integral de datos de campo en el sector agropecuario.</li>
-            <li><strong>Mi rol:</strong> Diseño e implementación de funcionalidades clave.</li>
-            <li><strong>Tecnologías:</strong> (COMPLETAR ACÁ QUÉ LENGUAJES O HERRAMIENTAS USASTE)</li>
-            <li><strong>Cliente/Entidad:</strong> TodoAgro.</li>
-        </ul>
-        <a href="LINK_AL_REPO_DE_TODOAGRO_O_DEMO" class="btn" target="_blank">Ver Proyecto</a>
-    </div>
+        <section id="ikigai">
+            <h2 class="mono text-xs text-muted mb-4">01 // Propósito Profesional</h2>
+            <h3 style="font-size: 2rem; font-weight: 300; margin-bottom: 2rem; margin-top: 1rem;">Diseñando el puente entre el código y el usuario.</h3>
+            <p class="text-muted" style="max-width: 800px;">
+                Mi perfil profesional se fundamenta en la capacidad de resolver problemas complejos desde una perspectiva integral. Aunque poseo una base sólida como Fullstack, mi pasión reside en el <strong>Frontend y el ecosistema Mobile</strong>. Disfruto liderar el ciclo de vida completo de la aplicación: desde el diseño de flujos de registro y KPIs, hasta la configuración de DevOps y el despliegue final en Google Play y App Store. Busco aportar valor a las organizaciones creando herramientas tecnológicas que agilicen operaciones y conecten a los usuarios de manera eficiente.
+            </p>
+            <div class="tech-stack" style="margin-top: 2rem;">
+                <span class="tag mono text-muted">React</span>
+                <span class="tag mono text-muted">Expo / React Native</span>
+                <span class="tag mono text-muted">TypeScript</span>
+                <span class="tag mono text-muted">GitLab / CI-CD</span>
+                <span class="tag mono text-muted">DevOps Mobile</span>
+            </div>
+        </section>
 
-    <div class="section">
-        <h2>Video de Presentación</h2>
-        <p>Te invito a conocer un poco más sobre mi perfil, mis intereses y lo que puedo aportar a un equipo de trabajo:</p>
-        <a href="LINK_A_TU_VIDEO" class="btn" target="_blank">Ver Video Presentación</a>
-    </div>
+        <section id="proyectos">
+            <h2 class="mono text-xs text-muted">02 // Obras y Experiencia</h2>
+            <p class="text-muted" style="margin-top: 1rem;">Desarrollos en producción aportando valor al sector agrotecnológico.</p>
 
-    <div class="section">
-        <h2>Mi Currículum</h2>
-        <p>Para ver el detalle completo de mi formación, experiencia y habilidades, podés descargar mi CV en formato PDF:</p>
-        <a href="CV_Bruno_Pini.pdf" class="btn" target="_blank">Descargar CV (PDF)</a>
-    </div>
+            <div class="project-card">
+                <div class="project-meta mono text-xs text-muted">
+                    <span style="color: var(--accent);">● En Producción</span>
+                    <span>Cliente: MACROINTELL</span>
+                    <span>2025 - Presente</span>
+                </div>
+                <div>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">TodoAgro Marketplace</h3>
+                    <p class="text-muted">Desarrollo integral (Frontend y Mobile) del marketplace principal de TodoAgro. Responsable de la creación de interfaces intuitivas, diseño de flujos críticos de compra y registro de usuarios.</p>
+                    <p class="text-muted" style="margin-top: 1rem;"><strong>Impacto Organizacional:</strong> Optimización de la experiencia de usuario en la plataforma, facilitando la conexión comercial entre productores y compradores a nivel masivo, asegurando alta disponibilidad y monitoreo constante de KPIs.</p>
+                    <div class="tech-stack">
+                        <span class="tag mono">Expo</span>
+                        <span class="tag mono">React</span>
+                        <span class="tag mono">TypeScript</span>
+                        <span class="tag mono">GitLab</span>
+                        <span class="tag mono">App Store Connect</span>
+                    </div>
+                    <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                        <a href="#" class="btn mono text-xs">Ver App Store</a>
+                        <a href="#" class="btn btn-outline mono text-xs">Ver Web</a>
+                    </div>
+                </div>
+            </div>
 
-    <div class="footer">
-        <p>Fecha de creación: 22 de marzo de 2026</p>
+            <div class="project-card">
+                <div class="project-meta mono text-xs text-muted">
+                    <span style="color: var(--accent);">● En Producción</span>
+                    <span>Cliente: MACROINTELL (Brasil)</span>
+                    <span>2025 - Presente</span>
+                </div>
+                <div>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Agrocarteira</h3>
+                    <p class="text-muted">Desarrollo de billetera virtual (Fintech) orientada al mercado agropecuario brasileño. Liderazgo técnico en la arquitectura frontend y despliegue en tiendas de aplicaciones.</p>
+                    <p class="text-muted" style="margin-top: 1rem;"><strong>Impacto Organizacional:</strong> Garantía de transacciones seguras y trazables mediante una interfaz de usuario fluida y confiable, expandiendo la infraestructura de pagos digitales de la compañía a nivel internacional.</p>
+                    <div class="tech-stack">
+                        <span class="tag mono">Mobile Development</span>
+                        <span class="tag mono">Frontend Web</span>
+                        <span class="tag mono">UX/UI Flows</span>
+                        <span class="tag mono">Google Play Console</span>
+                    </div>
+                    <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                        <a href="#" class="btn mono text-xs">Ver Play Store</a>
+                        <a href="#" class="btn btn-outline mono text-xs">Ver Web</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cv" style="text-align: center; border-bottom: none; padding-bottom: 50px;">
+            <h2 style="font-size: 2.5rem; font-weight: 300; margin-bottom: 1rem;">¿Listo para escalar el equipo?</h2>
+            <p class="text-muted" style="max-width: 600px; margin: 0 auto 2rem auto;">Descargá mi Currículum Vitae para ver en detalle mi formación académica en Sistemas y toda mi experiencia técnica.</p>
+            <a href="TU_CV.pdf" target="_blank" class="btn mono text-xs" style="padding: 1rem 2rem;">[ Descargar CV .PDF ]</a>
+        </section>
+
+        <footer>
+            <p class="mono text-xs text-muted">Ingeniería en Sistemas // 2026 // Bruno Pini</p>
+        </footer>
     </div>
 
 </body>
