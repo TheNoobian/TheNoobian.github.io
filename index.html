@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bruno Pini | Portfolio Profesional</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>Bruno Pini | Portfolio ISI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-dark: #0a0a0a;
-            --text-main: #f5f5f5;
+            --text-main: #ffffff;
             --text-muted: #a3a3a3;
-            --accent: #00ff9d; /* Un verde tech sutil para contrastar */
             --border-light: rgba(255, 255, 255, 0.1);
+            --border-hover: rgba(255, 255, 255, 0.3);
+            --accent: #3b82f6; /* Azul sutil para destacar */
         }
-        
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
@@ -25,142 +27,301 @@
             overflow-x: hidden;
         }
 
-        /* Utilidades tipográficas */
+        /* Tipografías Utilitarias */
         .mono { font-family: 'JetBrains Mono', monospace; }
         .text-xs { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; }
-        .title-huge { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; }
-        .text-muted { color: var(--text-muted); }
-
-        /* Layout */
+        .section-label { color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.4em; text-transform: uppercase; display: block; margin-bottom: 1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem; }
+        
+        /* Layout Base */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 100px 0; border-bottom: 1px solid var(--border-light); }
+        section { padding: 8rem 0; border-bottom: 1px solid var(--border-light); }
         
         /* Navbar */
-        nav { padding: 2rem 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); }
-        .logo { font-weight: 700; letter-spacing: -0.05em; font-size: 1.2rem; }
-        .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 2rem; font-size: 0.85rem; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid var(--border-light); }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.05em; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 2rem; font-size: 0.85rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--text-main); }
+        @media (max-width: 768px) { .nav-links { display: none; } } /* Ocultar links en mobile por simplicidad */
 
-        /* Botones y Tags */
-        .tag { background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; }
-        .btn { display: inline-flex; align-items: center; justify-content: center; background: white; color: black; padding: 0.8rem 1.5rem; text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: transform 0.3s; margin-top: 1rem; }
-        .btn:hover { transform: translateY(-2px); }
-        .btn-outline { background: transparent; color: white; border: 1px solid var(--border-light); }
-        .btn-outline:hover { background: rgba(255,255,255,0.05); }
+        /* Hero */
+        .hero-title { font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1; letter-spacing: -0.04em; margin-bottom: 1.5rem; }
+        .hero-title span { font-weight: 800; }
 
-        /* Grillas de Proyectos */
-        .project-card { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 4rem; padding: 2rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-light); transition: border-color 0.3s; }
-        .project-card:hover { border-color: rgba(255,255,255,0.2); }
-        @media (min-width: 768px) { .project-card { grid-template-columns: 1fr 2fr; } }
+        /* Grillas */
+        .grid-2 { display: grid; grid-template-columns: 1fr; gap: 4rem; }
+        @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
         
-        .project-meta span { display: block; margin-bottom: 0.5rem; }
-        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+        /* Skills Tags */
+        .stack-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+        .tag { background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; transition: all 0.3s; }
+        .tag:hover { border-color: var(--text-main); background: rgba(255,255,255,0.1); }
 
-        /* Grilla de Skills */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin-top: 3rem; }
-        .skill-item { padding: 1.5rem; border: 1px solid var(--border-light); text-align: center; background: rgba(255,255,255,0.01); transition: all 0.3s; }
-        .skill-item:hover { background: rgba(255,255,255,0.05); border-color: var(--accent); color: var(--accent); }
+        /* Progress Bar (Académico) */
+        .progress-container { width: 100%; background: rgba(255,255,255,0.05); height: 8px; border-radius: 4px; overflow: hidden; margin-top: 1rem; }
+        .progress-bar { height: 100%; background: var(--text-main); width: 0%; transition: width 1.5s ease-in-out; }
 
-        footer { padding: 4rem 0; text-align: center; }
+        /* Proyectos */
+        .project-card { display: flex; flex-direction: column; gap: 1.5rem; padding: 3rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .project-card:last-child { border-bottom: none; }
+        .project-header { display: flex; flex-direction: column; gap: 0.5rem; }
+        .project-header h3 { font-size: 2.5rem; font-weight: 600; letter-spacing: -0.02em; }
+        .store-links { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .store-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: transparent; border: 1px solid var(--border-light); color: var(--text-main); text-decoration: none; font-size: 0.8rem; border-radius: 4px; transition: all 0.3s; }
+        .store-btn:hover { background: var(--text-main); color: var(--bg-dark); }
+
+        /* Formación (Cursos) */
+        .course-list { display: flex; flex-direction: column; }
+        .course-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; border-bottom: 1px solid var(--border-light); transition: padding 0.3s; }
+        .course-item:hover { padding-left: 1rem; border-bottom-color: var(--border-hover); }
+        .course-title { font-size: 1.1rem; font-weight: 400; }
+        .course-author { color: var(--text-muted); font-size: 0.85rem; }
+
+        /* Contacto */
+        .contact-form { display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem; }
+        .contact-form input, .contact-form textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border-light); color: var(--text-main); padding: 1rem 0; font-family: 'Inter', sans-serif; font-size: 1.2rem; outline: none; transition: border-color 0.3s; }
+        .contact-form input:focus, .contact-form textarea:focus { border-bottom-color: var(--text-main); }
+        .btn-submit { background: var(--text-main); color: var(--bg-dark); border: none; padding: 1rem 2rem; font-weight: 600; cursor: pointer; transition: transform 0.3s; margin-top: 1rem; }
+        .btn-submit:hover { transform: translateY(-3px); }
+
+        /* Utilidades SVGs */
+        .icon { width: 16px; height: 16px; fill: currentColor; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <nav>
-            <div class="logo">BP.</div>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">BRUNO PINI.</div>
             <div class="nav-links mono">
-                <a href="#ikigai">01. Perfil</a>
-                <a href="#proyectos">02. Proyectos</a>
-                <a href="#cv">03. CV</a>
+                <a href="#perfil">01.Perfil</a>
+                <a href="#academico">02.Académico</a>
+                <a href="#proyectos">03.Proyectos</a>
+                <a href="#formacion">04.Formación</a>
+                <a href="#contacto">05.Contacto</a>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <section id="hero" style="border-bottom: none; padding-top: 120px;">
-            <p class="mono text-xs text-muted" style="margin-bottom: 1rem;">Estudiante Avanzado ISI &nbsp;//&nbsp; Desarrollador</p>
-            <h1 class="title-huge">Frontend & Mobile<br><span style="color: var(--accent);">Developer.</span></h1>
-            <p class="text-muted" style="max-width: 600px; margin-top: 2rem; font-size: 1.1rem;">
-                Transformo requerimientos de negocio en experiencias de usuario escalables y de alto impacto. Especializado en el ecosistema mobile y web.
+    <div class="container" style="padding-top: 120px;">
+        
+        <section id="inicio" style="border-bottom: none; padding-bottom: 4rem;">
+            <p class="mono text-xs text-muted mb-4">Ingeniería en Sistemas // Frontend & Mobile</p>
+            <h1 class="hero-title">Desarrollo de software<br>con enfoque en <span>UX y Seguridad.</span></h1>
+            <p class="text-muted" style="max-width: 600px; font-size: 1.2rem; margin-top: 2rem;">
+                Creo aplicaciones escalables poniéndome siempre del lado del usuario. Transformo requerimientos de negocio en experiencias eficientes y seguras.
             </p>
         </section>
 
-        <section id="ikigai">
-            <h2 class="mono text-xs text-muted mb-4">01 // Propósito Profesional</h2>
-            <h3 style="font-size: 2rem; font-weight: 300; margin-bottom: 2rem; margin-top: 1rem;">Diseñando el puente entre el código y el usuario.</h3>
-            <p class="text-muted" style="max-width: 800px;">
-                Mi perfil profesional se fundamenta en la capacidad de resolver problemas complejos desde una perspectiva integral. Aunque poseo una base sólida como Fullstack, mi pasión reside en el <strong>Frontend y el ecosistema Mobile</strong>. Disfruto liderar el ciclo de vida completo de la aplicación: desde el diseño de flujos de registro y KPIs, hasta la configuración de DevOps y el despliegue final en Google Play y App Store. Busco aportar valor a las organizaciones creando herramientas tecnológicas que agilicen operaciones y conecten a los usuarios de manera eficiente.
-            </p>
-            <div class="tech-stack" style="margin-top: 2rem;">
-                <span class="tag mono text-muted">React</span>
-                <span class="tag mono text-muted">Expo / React Native</span>
-                <span class="tag mono text-muted">TypeScript</span>
-                <span class="tag mono text-muted">GitLab / CI-CD</span>
-                <span class="tag mono text-muted">DevOps Mobile</span>
+        <section id="perfil">
+            <span class="section-label mono">01 // Marca Personal e Ikigai</span>
+            <div class="grid-2">
+                <div>
+                    <h2 style="font-size: 2rem; font-weight: 300; margin-bottom: 1.5rem;">Optimizando procesos a través de la empatía técnica.</h2>
+                    <p class="text-muted mb-4">
+                        Soy un desarrollador apasionado por el trabajo en equipo y el nivel de detalle. Mi Ikigai profesional se basa en cruzar soluciones técnicas con la experiencia humana. Soy especialmente bueno detectando fallas de seguridad y mejorando la experiencia de usuario (UX) porque diseño y programo poniéndome en los zapatos de quien va a usar el sistema.
+                    </p>
+                    <p class="text-muted">
+                        Tengo experiencia real operando en el mercado brasileño, construyendo de cero flujos complejos de pago (como PIX o Boletos) e integrando APIs de Fintechs y Google.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="mono text-xs text-muted" style="margin-bottom: 1rem;">Arsenal Técnico [Stack]</h3>
+                    <div class="stack-container mono">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">React</span>
+                        <span class="tag">React Native</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">Supabase</span>
+                        <span class="tag">Figma</span>
+                        <span class="tag">n8n (Agentes)</span>
+                        <span class="tag">Integración APIs Fintech</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="academico">
+            <span class="section-label mono">02 // Carrera Universitaria</span>
+            <div style="background: rgba(255,255,255,0.02); padding: 3rem; border: 1px solid var(--border-light); border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <h3 style="font-size: 1.8rem; font-weight: 600;">Ingeniería en Sistemas de Información</h3>
+                        <p class="mono text-xs text-muted" style="margin-top: 0.5rem;">UNIVERSIDAD DE LA CUENCA DEL PLATA</p>
+                    </div>
+                    <span class="tag mono text-main" style="border-color: var(--accent);">5to Año - Cursando</span>
+                </div>
+                
+                <div style="margin-top: 3rem;">
+                    <div style="display: flex; justify-content: space-between;" class="mono text-xs text-muted">
+                        <span>Progreso Académico (Materias al día)</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="univ-progress"></div>
+                    </div>
+                    <p class="text-muted" style="font-size: 0.9rem; margin-top: 1rem;">Cursando el último año de la carrera, combinando la formación teórica y de arquitectura de sistemas con la práctica laboral diaria.</p>
+                </div>
             </div>
         </section>
 
         <section id="proyectos">
-            <h2 class="mono text-xs text-muted">02 // Obras y Experiencia</h2>
-            <p class="text-muted" style="margin-top: 1rem;">Desarrollos en producción aportando valor al sector agrotecnológico.</p>
-
+            <span class="section-label mono">03 // Proyectos y Aporte Organizacional</span>
+            
             <div class="project-card">
-                <div class="project-meta mono text-xs text-muted">
-                    <span style="color: var(--accent);">● En Producción</span>
-                    <span>Cliente: MACROINTELL</span>
-                    <span>2025 - Presente</span>
+                <div class="project-header">
+                    <span class="mono text-xs text-muted">En Producción // Cliente: MACROINTELL</span>
+                    <h3>TodoAgro Marketplace</h3>
+                    <p class="mono text-xs text-muted" style="border-left: 2px solid var(--border-light); padding-left: 1rem;">Marketplace Agropecuario · Web & Mobile</p>
                 </div>
-                <div>
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">TodoAgro Marketplace</h3>
-                    <p class="text-muted">Desarrollo integral (Frontend y Mobile) del marketplace principal de TodoAgro. Responsable de la creación de interfaces intuitivas, diseño de flujos críticos de compra y registro de usuarios.</p>
-                    <p class="text-muted" style="margin-top: 1rem;"><strong>Impacto Organizacional:</strong> Optimización de la experiencia de usuario en la plataforma, facilitando la conexión comercial entre productores y compradores a nivel masivo, asegurando alta disponibilidad y monitoreo constante de KPIs.</p>
-                    <div class="tech-stack">
-                        <span class="tag mono">Expo</span>
-                        <span class="tag mono">React</span>
-                        <span class="tag mono">TypeScript</span>
-                        <span class="tag mono">GitLab</span>
-                        <span class="tag mono">App Store Connect</span>
-                    </div>
-                    <div style="margin-top: 2rem; display: flex; gap: 1rem;">
-                        <a href="#" class="btn mono text-xs">Ver App Store</a>
-                        <a href="#" class="btn btn-outline mono text-xs">Ver Web</a>
-                    </div>
+                <p class="text-muted max-w-3xl">
+                    Desarrollo integral de la plataforma web y aplicación móvil para el marketplace de TodoAgro. Responsable de la creación visual, configuración DevOps para despliegues, monitoreo de KPIs y diseño de flujos de registro y compra orientados a la conversión.
+                </p>
+                <div class="store-links mono">
+                    <a href="https://todoagro.com.br/" target="_blank" class="store-btn">🌐 Ver Web</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.todoagro.todoagroapp" target="_blank" class="store-btn">▶ Play Store</a>
+                    <a href="https://apps.apple.com/ar/app/todoagro/id6740921180" target="_blank" class="store-btn">🍎 App Store</a>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-meta mono text-xs text-muted">
-                    <span style="color: var(--accent);">● En Producción</span>
-                    <span>Cliente: MACROINTELL (Brasil)</span>
-                    <span>2025 - Presente</span>
+                <div class="project-header">
+                    <span class="mono text-xs text-muted">En Producción // Cliente: MACROINTELL (Brasil)</span>
+                    <h3>Agrocarteira</h3>
+                    <p class="mono text-xs text-muted" style="border-left: 2px solid var(--border-light); padding-left: 1rem;">Billetera Virtual / Fintech · Web & Mobile</p>
                 </div>
-                <div>
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Agrocarteira</h3>
-                    <p class="text-muted">Desarrollo de billetera virtual (Fintech) orientada al mercado agropecuario brasileño. Liderazgo técnico en la arquitectura frontend y despliegue en tiendas de aplicaciones.</p>
-                    <p class="text-muted" style="margin-top: 1rem;"><strong>Impacto Organizacional:</strong> Garantía de transacciones seguras y trazables mediante una interfaz de usuario fluida y confiable, expandiendo la infraestructura de pagos digitales de la compañía a nivel internacional.</p>
-                    <div class="tech-stack">
-                        <span class="tag mono">Mobile Development</span>
-                        <span class="tag mono">Frontend Web</span>
-                        <span class="tag mono">UX/UI Flows</span>
-                        <span class="tag mono">Google Play Console</span>
+                <p class="text-muted max-w-3xl">
+                    Desarrollo de billetera virtual para el mercado brasileño. Lideré la implementación completa del flujo de pagos (PIX, Boleto bancario) garantizando altos estándares de seguridad y una experiencia de usuario sin fricciones. Gestión de conexiones de red y publicación en stores.
+                </p>
+                <div class="store-links mono">
+                    <a href="https://agrocarteira.com.br/" target="_blank" class="store-btn">🌐 Ver Web</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.todoagro.agrocarteiraapp" target="_blank" class="store-btn">▶ Play Store</a>
+                    <a href="https://apps.apple.com/ar/app/agrocarteira/id6740410029" target="_blank" class="store-btn">🍎 App Store</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="mono text-xs text-muted">Proyecto Académico // Desarrollo Fullstack</span>
+                    <h3>VocalPro (Gestión Fonoaudiológica)</h3>
+                    <p class="mono text-xs text-muted" style="border-left: 2px solid var(--border-light); padding-left: 1rem;">Plataforma SaaS · Sistema de Gestión</p>
+                </div>
+                <p class="text-muted max-w-3xl">
+                    Plataforma que conecta profesionales fonoaudiólogos con pacientes. Diseñé un modelo SaaS donde el profesional paga una suscripción para gestionar pacientes, asignar ejercicios y realizar seguimientos. Los pacientes acceden mediante credenciales seguras provistas por su médico. Enfoque en control de accesos y privacidad de datos.
+                </p>
+                <div class="store-links mono">
+                    <a href="https://tpi-fono-frontend.vercel.app/" target="_blank" class="store-btn">🌐 Ver Plataforma</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="formacion">
+            <span class="section-label mono">04 // Formación Continua (2023 - 2026)</span>
+            <p class="text-muted mb-4">Mantener el código actualizado requiere mantener el conocimiento actualizado. Capacitaciones complementarias a la ingeniería:</p>
+            
+            <div class="course-list">
+                <div class="course-item">
+                    <div>
+                        <h4 class="course-title">React Native CLI: Aplicaciones para IOS y Android (2025)</h4>
+                        <span class="course-author mono text-xs">Fernando Herrera - Udemy</span>
                     </div>
-                    <div style="margin-top: 2rem; display: flex; gap: 1rem;">
-                        <a href="#" class="btn mono text-xs">Ver Play Store</a>
-                        <a href="#" class="btn btn-outline mono text-xs">Ver Web</a>
+                </div>
+                <div class="course-item">
+                    <div>
+                        <h4 class="course-title">React: De cero a experto</h4>
+                        <span class="course-author mono text-xs">Fernando Herrera - Udemy</span>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div>
+                        <h4 class="course-title">Máster en Typescript: Desde Cero a Nivel Profesional</h4>
+                        <span class="course-author mono text-xs">Rodrigo Morales - Udemy</span>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div>
+                        <h4 class="course-title">Node: De cero a experto</h4>
+                        <span class="course-author mono text-xs">Fernando Herrera - Udemy</span>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div>
+                        <h4 class="course-title">Patrones de Diseño en JavaScript y TypeScript</h4>
+                        <span class="course-author mono text-xs">Udemy</span>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div>
+                        <h4 class="course-title">AWS Curso Básico para desarrolladores web</h4>
+                        <span class="course-author mono text-xs">Leifer Mendez - Udemy</span>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div>
+                        <h4 class="course-title">React Query / TanStack Query: React Server State</h4>
+                        <span class="course-author mono text-xs">Bonnie Schulkin - Udemy</span>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div>
+                        <h4 class="course-title">React Hooks: Guia inicial utilizando Redux y Material.UI</h4>
+                        <span class="course-author mono text-xs">Juan Jose Ortiz del Toro - Udemy</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="cv" style="text-align: center; border-bottom: none; padding-bottom: 50px;">
-            <h2 style="font-size: 2.5rem; font-weight: 300; margin-bottom: 1rem;">¿Listo para escalar el equipo?</h2>
-            <p class="text-muted" style="max-width: 600px; margin: 0 auto 2rem auto;">Descargá mi Currículum Vitae para ver en detalle mi formación académica en Sistemas y toda mi experiencia técnica.</p>
-            <a href="TU_CV.pdf" target="_blank" class="btn mono text-xs" style="padding: 1rem 2rem;">[ Descargar CV .PDF ]</a>
+        <section id="contacto" style="border-bottom: none; padding-bottom: 4rem;">
+            <span class="section-label mono">05 // Conexión</span>
+            <div class="grid-2">
+                <div>
+                    <h2 style="font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem;">¿Hablamos de código?</h2>
+                    <p class="text-muted mb-4">Si estás buscando un desarrollador que entienda el negocio, cuide la seguridad y escriba código limpio, mandame un mensaje.</p>
+                    <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                        <a href="mailto:bpini44@gmail.com" class="mono text-main" style="text-decoration: none;">✉ bpini44@gmail.com</a>
+                        <a href="https://www.linkedin.com/in/bruno-pini-632757296/" target="_blank" class="mono text-main" style="text-decoration: none;">🔗 LinkedIn / Bruno Pini</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <form action="https://formsubmit.co/bpini44@gmail.com" method="POST" class="contact-form">
+                        <input type="hidden" name="_next" value="https://thenoobian.github.io/">
+                        <input type="hidden" name="_subject" value="¡Nuevo mensaje desde tu Portfolio!">
+                        
+                        <input type="text" name="name" placeholder="Tu Nombre" required>
+                        <input type="email" name="email" placeholder="Tu Email" required>
+                        <textarea name="message" rows="4" placeholder="Tu Mensaje" required></textarea>
+                        
+                        <button type="submit" class="btn-submit mono text-xs">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
         </section>
 
-        <footer>
-            <p class="mono text-xs text-muted">Ingeniería en Sistemas // 2026 // Bruno Pini</p>
+        <footer style="padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-light); margin-top: 4rem;">
+            <p class="mono text-xs text-muted">Desarrollado por Bruno Pini // 2026 // Ingeniería en Sistemas</p>
         </footer>
+
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const progressBar = document.getElementById("univ-progress");
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        progressBar.style.width = "80%";
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(progressBar);
+        });
+    </script>
 </body>
 </html>
