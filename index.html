@@ -42,19 +42,23 @@
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* Botón de Idioma */
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-light);
-            color: var(--text-main);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
+        /* Botón de Idioma Mejorado */
+        .lang-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid var(--accent);
+            padding: 5px 12px;
+            border-radius: 50px;
             cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-main);
             font-size: 0.8rem;
             font-weight: 600;
-            transition: all 0.3s;
         }
-        .lang-btn:hover { background: var(--accent); color: var(--bg-main); border-color: var(--accent); }
+        .lang-selector:hover { background: var(--accent); color: var(--bg-main); box-shadow: 0 0 15px var(--accent-glow); }
+        .lang-selector svg { width: 16px; height: 16px; fill: currentColor; }
 
         .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; position: relative; display: inline-block; }
         .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50px; height: 4px; background: var(--accent); border-radius: 2px; }
@@ -121,7 +125,10 @@
                 <a href="#proyectos" id="nav-proyectos">&lt;Proyectos/&gt;</a>
                 <a href="#background" id="nav-background">&lt;Background/&gt;</a>
                 <a href="#contacto" id="nav-contacto">&lt;Contacto/&gt;</a>
-                <button class="lang-btn" onclick="toggleLanguage()" id="lang-toggle">EN</button>
+                <div class="lang-selector" onclick="toggleLanguage()">
+                    <svg viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+                    <span id="lang-label">ENGLISH</span>
+                </div>
             </div>
         </div>
     </nav>
@@ -174,12 +181,9 @@
 
         <section id="proyectos" class="reveal">
             <h2 class="section-title" id="title-proyectos">En Producción</h2>
-            
             <div class="project-grid">
                 <div class="glass-card">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                        <span class="mono" style="color: var(--accent); font-size: 0.85rem;" id="client-agro">[ Cliente: MACROINTELL ]</span>
-                    </div>
+                    <span class="mono" style="color: var(--accent); font-size: 0.85rem;" id="client-agro">[ Cliente: MACROINTELL ]</span>
                     <div class="project-content">
                         <h3>TodoAgro Marketplace</h3>
                         <p id="agro-p">Desarrollo activo de la plataforma web y la app móvil. Actualmente trabajo creando y manteniendo interfaces sólidas y fluidas. Mi enfoque asegura que la experiencia del usuario, desde la búsqueda hasta la finalización de la compra, opere sin interrupciones en el entorno de producción real.</p>
@@ -192,9 +196,7 @@
                 </div>
 
                 <div class="glass-card">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                        <span class="mono" style="color: var(--accent); font-size: 0.85rem;" id="client-fintech">[ Cliente: MACROINTELL Brasil ]</span>
-                    </div>
+                    <span class="mono" style="color: var(--accent); font-size: 0.85rem;" id="client-fintech">[ Cliente: MACROINTELL Brasil ]</span>
                     <div class="project-content">
                         <h3>Agrocarteira (Billetera Virtual)</h3>
                         <p id="fintech-p">Desarrollo actual Frontend y Mobile para esta plataforma Fintech. A diferencia de un e-commerce tradicional, aquí el desafío principal es manejar dinero real de los usuarios y garantizar la máxima seguridad transaccional al integrar flujos de pago altamente sensibles (como PIX y Boleto) para el mercado brasileño.</p>
@@ -207,9 +209,7 @@
                 </div>
 
                 <div class="glass-card">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                        <span class="mono" style="color: var(--text-muted); font-size: 0.85rem;" id="client-fono">[ Desarrollo Independiente ]</span>
-                    </div>
+                    <span class="mono" style="color: var(--text-muted); font-size: 0.85rem;" id="client-fono">[ Desarrollo Independiente ]</span>
                     <div class="project-content">
                         <h3>VocalPro (SaaS Clínico)</h3>
                         <p id="fono-p">Desarrollo Fullstack de una plataforma SaaS para fonoaudiólogos. Implementé un sistema integral con control de accesos basado en roles, bases de datos relacionales y autenticación segura para garantizar la privacidad de los pacientes y facilitar la gestión del entorno clínico al profesional.</p>
@@ -226,22 +226,20 @@
         <section id="background" class="reveal">
             <h2 class="section-title" id="title-background">Background & Certificaciones</h2>
             <div class="glass-card background-dashboard" style="margin-bottom: 3rem;">
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-                    <div class="circle-chart" id="circleProgress">
-                        <div class="circle-inner">
-                            <span id="percentText">5to</span>
-                            <small id="small-year">Año en Curso</small>
-                        </div>
+                <div class="circle-chart" id="circleProgress">
+                    <div class="circle-inner">
+                        <span id="percentText">5to</span>
+                        <small id="small-year">Año en Curso</small>
                     </div>
                 </div>
                 <div>
                     <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;" id="edu-h3">Ingeniería en Sistemas</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;" id="edu-p">Cursando la etapa final de la carrera, consolidando conocimientos avanzados en arquitectura de software, bases de datos y gestión de proyectos tecnológicos.</p>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;" id="edu-p">Cursando la etapa final de la carrera[cite: 2], consolidando conocimientos avanzados en arquitectura de software, bases de datos y gestión de proyectos tecnológicos.</p>
                     <span class="tag-tech mono" style="background: rgba(14, 165, 233, 0.1); border: none; color: var(--accent);" id="edu-tag">Estudiante Avanzado</span>
                 </div>
             </div>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;" id="course-intro">Cursos completados recientemente para mantener el stack actualizado (y más por venir):</p>
-            <div class="course-grid" id="course-container">
+            <p style="color: var(--text-muted); margin-bottom: 2rem;" id="course-intro">Cursos completados recientemente para mantener el stack actualizado:</p>
+            <div class="course-grid">
                 <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span><h4>React Native CLI para IOS y Android</h4></div>
                 <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span><h4>React: De cero a experto</h4></div>
                 <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Rodrigo Morales</span><h4>Máster en Typescript Nivel Profesional</h4></div>
@@ -256,24 +254,17 @@
         <section id="contacto" class="reveal" style="padding-bottom: 3rem;">
             <div class="glass-card grid-2">
                 <div>
-                    <h2 class="section-title" style="margin-bottom: 1.5rem;" id="title-contacto">Contacto</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;" id="contact-p">Si buscás un desarrollador con perfil Fullstack capaz de resolver problemas complejos y escribir código escalable, dejame un mensaje.</p>
+                    <h2 class="section-title" id="title-contacto">Contacto</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;" id="contact-p">Si buscás un desarrollador con perfil Fullstack capaz de resolver problemas complejos, dejame un mensaje.</p>
                     <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                        <a href="mailto:bpini44@gmail.com" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;">
-                            <span style="background: rgba(255,255,255,0.1); padding: 0.5rem; border-radius: 8px;">📧</span> bpini44@gmail.com
-                        </a>
-                        <a href="https://www.linkedin.com/in/bruno-pini-632757296/" target="_blank" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;">
-                            <span style="background: rgba(255,255,255,0.1); padding: 0.5rem; border-radius: 8px;">💼</span> LinkedIn Profile
-                        </a>
-                        <a href="https://github.com/TheNoobian" target="_blank" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;">
-                            <span style="background: rgba(255,255,255,0.1); padding: 0.5rem; border-radius: 8px;">💻</span> GitHub Profile
-                        </a>
+                        <a href="mailto:bpini44@gmail.com" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;"><span>📧</span> bpini44@gmail.com</a>
+                        <a href="https://www.linkedin.com/in/bruno-pini-632757296/" target="_blank" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;"><span>💼</span> LinkedIn Profile</a>
+                        <a href="https://github.com/TheNoobian" target="_blank" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;"><span>💻</span> GitHub Profile</a>
                         <a href="Bruno_Pini_CV.pdf" target="_blank" class="cv-highlight" id="cv-footer">📄 Descargar Currículum Vitae (.PDF)</a>
                     </div>
                 </div>
                 <div>
                     <form action="https://formsubmit.co/bpini44@gmail.com" method="POST" class="contact-form">
-                        <input type="hidden" name="_next" value="https://thenoobian.github.io/">
                         <input type="text" name="name" id="form-name" placeholder="Tu Nombre" required>
                         <input type="email" name="email" id="form-email" placeholder="Tu Email" required>
                         <textarea name="message" id="form-msg" rows="4" placeholder="¿En qué puedo ayudarte?" required></textarea>
@@ -291,8 +282,10 @@
     <script>
         const translations = {
             es: {
+                lang_label: "ENGLISH",
                 nav_perfil: "<Perfil/>", nav_proyectos: "<Proyectos/>", nav_background: "<Background/>", nav_contacto: "<Contacto/>",
-                hero_badge: "Fullstack Developer", hero_title: "Soluciones completas<br><span>desde cero.</span>",
+                hero_badge: "Fullstack Developer", 
+                hero_title: "Soluciones completas<br><span>desde cero.</span>",
                 hero_subtitle: "Capacidad para estructurar bases de datos, levantar APIs y crear interfaces fluidas (Web y Mobile) asegurando el funcionamiento eficiente de todo el sistema.",
                 btn_projects: "Ver Proyectos", btn_cv: "📄 Descargar CV", btn_video: "🎥 Video Presentación",
                 title_perfil: "Perfil Técnico", perfil_h3: "Visión 360° del Software",
@@ -300,17 +293,19 @@
                 perfil_p2: "Me destaco por tomar proyectos desde sus cimientos y llevarlos hasta un funcionamiento eficiente en producción, siempre priorizando la escalabilidad del código y la mejor experiencia posible para el usuario final.",
                 title_proyectos: "En Producción", client_agro: "[ Cliente: MACROINTELL ]", agro_p: "Desarrollo activo de la plataforma web y la app móvil. Actualmente trabajo creando y manteniendo interfaces sólidas y fluidas. Mi enfoque asegura que la experiencia del usuario, desde la búsqueda hasta la finalización de la compra, opere sin interrupciones en el entorno de producción real.",
                 client_fintech: "[ Cliente: MACROINTELL Brasil ]", fintech_p: "Desarrollo actual Frontend y Mobile para esta plataforma Fintech. A diferencia de un e-commerce tradicional, aquí el desafío principal es manejar dinero real de los usuarios y garantizar la máxima seguridad transaccional al integrar flujos de pago altamente sensibles (como PIX y Boleto) para el mercado brasileño.",
-                client_fono: "[ Desarrollo Independiente ]", fono_p: "Desarrollo Fullstack de una plataforma SaaS para fonoaudiólogos. Implementé un sistema integral con control de accesos basado en roles, bases de datos relacionales y autenticación segura para garantizar la privacidad de los pacientes y facilitar la gestión del entorno clínico al profesional.",
+                client_fono: "[ Desarrollo Independiente ]", fono_p: "Desarrollo Fullstack de una plataforma SaaS para fonoaudiólogos. Implementé un sistema integral con control de accesos basado en roles, bases de datos relacionales y autenticación segura para garantizar la privacidad de los pacientes.",
                 title_background: "Background & Certificaciones", small_year: "Año en Curso", edu_h3: "Ingeniería en Sistemas",
-                edu_p: "Cursando la etapa final de la carrera, consolidando conocimientos avanzados en arquitectura de software, bases de datos y gestión de proyectos tecnológicos.",
-                edu_tag: "Estudiante Avanzado", course_intro: "Cursos completados recientemente para mantener el stack actualizado (y más por venir):",
-                title_contacto: "Contacto", contact_p: "Si buscás un desarrollador con perfil Fullstack capaz de resolver problemas complejos y escribir código escalable, dejame un mensaje.",
+                edu_p: "Cursando la etapa final de la carrera, consolidando conocimientos avanzados en arquitectura de software y gestión de proyectos tecnológicos.",
+                edu_tag: "Estudiante Avanzado", course_intro: "Cursos completados recientemente para mantener el stack actualizado:",
+                title_contacto: "Contacto", contact_p: "Si buscás un desarrollador con perfil Fullstack capaz de resolver problemas complejos, dejame un mensaje.",
                 cv_footer: "📄 Descargar Currículum Vitae (.PDF)", form_name: "Tu Nombre", form_email: "Tu Email", form_msg: "¿En qué puedo ayudarte?", btn_submit: "Enviar Mensaje",
                 footer_text: "Fecha de creación: 22 de Marzo de 2026 | © Bruno Pini."
             },
             en: {
+                lang_label: "ESPAÑOL",
                 nav_perfil: "<Profile/>", nav_proyectos: "<Projects/>", nav_background: "<Background/>", nav_contacto: "<Contact/>",
-                hero_badge: "Fullstack Developer", hero_title: "Full-scale solutions<br><span>from scratch.</span>",
+                hero_badge: "Fullstack Developer", 
+                hero_title: "Full-scale solutions<br><span>from scratch.</span>",
                 hero_subtitle: "Ability to structure databases, build APIs, and create fluid interfaces (Web & Mobile) ensuring the efficient operation of the entire system.",
                 btn_projects: "View Projects", btn_cv: "📄 Download CV", btn_video: "🎥 Video Presentation",
                 title_perfil: "Technical Profile", perfil_h3: "360° Software Vision",
@@ -318,11 +313,11 @@
                 perfil_p2: "I excel at taking projects from their foundations to efficient production operation, always prioritizing code scalability and the best possible user experience.",
                 title_proyectos: "In Production", client_agro: "[ Client: MACROINTELL ]", agro_p: "Active development of the web platform and mobile app. Currently working on creating and maintaining solid, fluid interfaces. My focus ensures the user experience, from search to checkout, operates seamlessly in the real production environment.",
                 client_fintech: "[ Client: MACROINTELL Brazil ]", fintech_p: "Current Frontend and Mobile development for this Fintech platform. Unlike traditional e-commerce, the main challenge here is handling real user money and ensuring maximum transactional security by integrating highly sensitive payment flows (like PIX and Boleto) for the Brazilian market.",
-                client_fono: "[ Independent Development ]", fono_p: "Fullstack development of a SaaS platform for speech therapists. I implemented a comprehensive system with role-based access control, relational databases, and secure authentication to guarantee patient privacy and facilitate clinical management for the professional.",
+                client_fono: "[ Independent Development ]", fono_p: "Fullstack development of a SaaS platform for speech therapists. I implemented a comprehensive system with role-based access control, relational databases, and secure authentication to guarantee patient privacy.",
                 title_background: "Background & Certifications", small_year: "Current Year", edu_h3: "Systems Engineering",
-                edu_p: "Currently in the final stage of my degree, consolidating advanced knowledge in software architecture, databases, and technology project management.",
-                edu_tag: "Advanced Student", course_intro: "Courses recently completed to keep the stack up to date (and more to come):",
-                title_contacto: "Contact", contact_p: "If you're looking for a Fullstack developer capable of solving complex problems and writing scalable code, leave me a message.",
+                edu_p: "Currently in the final stage of my degree, consolidating advanced knowledge in software architecture and technology project management.",
+                edu_tag: "Advanced Student", course_intro: "Courses recently completed to keep the stack up to date:",
+                title_contacto: "Contact", contact_p: "If you're looking for a Fullstack developer capable of solving complex problems, leave me a message.",
                 cv_footer: "📄 Download Curriculum Vitae (.PDF)", form_name: "Your Name", form_email: "Your Email", form_msg: "How can I help you?", btn_submit: "Send Message",
                 footer_text: "Creation Date: March 22, 2026 | © Bruno Pini."
             }
@@ -332,13 +327,15 @@
 
         function toggleLanguage() {
             currentLang = currentLang === 'es' ? 'en' : 'es';
-            document.getElementById('lang-toggle').innerText = currentLang === 'es' ? 'EN' : 'ES';
             
             Object.keys(translations[currentLang]).forEach(key => {
-                const el = document.getElementById(key.replace('_', '-'));
+                const el = document.getElementById(key.replace(/_/g, '-'));
                 if (el) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = translations[currentLang][key];
-                    else el.innerHTML = translations[currentLang][key];
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = translations[currentLang][key];
+                    } else {
+                        el.innerHTML = translations[currentLang][key];
+                    }
                 }
             });
         }
