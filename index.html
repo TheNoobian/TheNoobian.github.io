@@ -38,27 +38,29 @@
         .nav-content { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; max-width: 1100px; margin: 0 auto; }
         .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: 1px; color: var(--text-main); }
         .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* Botón de Idioma Mejorado */
+        /* Botón de Idioma Destacado */
         .lang-selector {
             display: flex;
             align-items: center;
             gap: 8px;
             background: rgba(14, 165, 233, 0.1);
-            border: 1px solid var(--accent);
-            padding: 5px 12px;
+            border: 2px solid var(--accent);
+            padding: 6px 14px;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s;
             color: var(--text-main);
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-left: 1rem;
         }
-        .lang-selector:hover { background: var(--accent); color: var(--bg-main); box-shadow: 0 0 15px var(--accent-glow); }
-        .lang-selector svg { width: 16px; height: 16px; fill: currentColor; }
+        .lang-selector:hover { background: var(--accent); color: var(--bg-main); box-shadow: 0 0 20px var(--accent-glow); transform: scale(1.05); }
+        .lang-selector svg { width: 18px; height: 18px; fill: currentColor; }
 
         .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; position: relative; display: inline-block; }
         .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50px; height: 4px; background: var(--accent); border-radius: 2px; }
@@ -112,7 +114,7 @@
         .cv-highlight { color: var(--text-main); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.5rem; background: rgba(14, 165, 233, 0.1); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--accent); font-weight: 600; font-size: 1.1rem; transition: all 0.3s; }
         .cv-highlight:hover { background: var(--accent); color: var(--bg-main); box-shadow: 0 5px 20px var(--accent-glow); transform: translateY(-3px); }
 
-        @media (max-width: 768px) { .nav-links a { display: none; } }
+        @media (max-width: 768px) { .nav-links a { display: none; } .lang-selector span { display: none; } }
     </style>
 </head>
 <body>
@@ -134,7 +136,6 @@
     </nav>
 
     <div class="container">
-        
         <section id="inicio" class="hero reveal">
             <div>
                 <div class="hero-badge mono" id="hero-badge">Fullstack Developer</div>
@@ -153,27 +154,23 @@
             <div class="grid-2">
                 <div class="glass-card">
                     <h3 style="font-size: 1.5rem; margin-bottom: 1rem;" id="perfil-h3">Visión 360° del Software</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;" id="perfil-p1">
-                        Aunque actualmente mi enfoque principal está en el desarrollo Frontend y Mobile dentro de equipos ágiles (ClickUp/Jira), poseo un perfil Fullstack. Esto me permite no solo ejecutar tareas específicas en la interfaz, sino entender cómo la arquitectura de datos, la seguridad y el backend interactúan para hacer que el producto final sea realmente sólido.
-                    </p>
-                    <p style="color: var(--text-muted);" id="perfil-p2">
-                        Me destaco por tomar proyectos desde sus cimientos y llevarlos hasta un funcionamiento eficiente en producción, siempre priorizando la escalabilidad del código y la mejor experiencia posible para el usuario final.
-                    </p>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;" id="perfil-p1">Aunque actualmente mi enfoque principal está en el desarrollo Frontend y Mobile dentro de equipos ágiles [cite: 29], poseo un perfil Fullstack[cite: 2]. Esto me permite entender cómo la arquitectura de datos, la seguridad y el backend interactúan para hacer que el producto final sea sólido[cite: 25].</p>
+                    <p style="color: var(--text-muted);" id="perfil-p2">Me destaco por tomar proyectos desde sus cimientos y llevarlos hasta un funcionamiento eficiente en producción [cite: 25, 26], priorizando siempre la escalabilidad del código y la mejor experiencia para el usuario final[cite: 24].</p>
                 </div>
                 <div>
                     <h3 class="mono" style="color: var(--accent); margin-bottom: 1rem;">> tech_stack.json</h3>
                     <div class="tags-container mono">
-                        <span class="tag-tech">React / Next.js</span>
-                        <span class="tag-tech">React Native</span>
-                        <span class="tag-tech">TypeScript</span>
-                        <span class="tag-tech">Node.js</span>
-                        <span class="tag-tech">SQL / PostgreSQL</span>
-                        <span class="tag-tech">MongoDB</span>
-                        <span class="tag-tech">Firebase</span>
-                        <span class="tag-tech">Supabase</span>
-                        <span class="tag-tech">Figma</span>
-                        <span class="tag-tech">Integración APIs Fintech</span>
-                        <span class="tag-tech">n8n (Agentes)</span>
+                        <span class="tag-tech">React / Next.js [cite: 34]</span>
+                        <span class="tag-tech">React Native [cite: 34]</span>
+                        <span class="tag-tech">TypeScript [cite: 35]</span>
+                        <span class="tag-tech">Node.js [cite: 35]</span>
+                        <span class="tag-tech">SQL / PostgreSQL [cite: 35]</span>
+                        <span class="tag-tech">MongoDB [cite: 36]</span>
+                        <span class="tag-tech">Firebase [cite: 36]</span>
+                        <span class="tag-tech">Supabase [cite: 36]</span>
+                        <span class="tag-tech">Figma [cite: 40]</span>
+                        <span class="tag-tech">APIs Fintech [cite: 37]</span>
+                        <span class="tag-tech">n8n (Agentes) [cite: 38]</span>
                     </div>
                 </div>
             </div>
@@ -185,8 +182,8 @@
                 <div class="glass-card">
                     <span class="mono" style="color: var(--accent); font-size: 0.85rem;" id="client-agro">[ Cliente: MACROINTELL ]</span>
                     <div class="project-content">
-                        <h3>TodoAgro Marketplace</h3>
-                        <p id="agro-p">Desarrollo activo de la plataforma web y la app móvil. Actualmente trabajo creando y manteniendo interfaces sólidas y fluidas. Mi enfoque asegura que la experiencia del usuario, desde la búsqueda hasta la finalización de la compra, opere sin interrupciones en el entorno de producción real.</p>
+                        <h3>TodoAgro Marketplace [cite: 30]</h3>
+                        <p id="agro-p">Desarrollo activo de la plataforma web y app móvil[cite: 32]. Creo interfaces fluidas y aseguro que la experiencia del usuario, desde la búsqueda hasta la compra, opere sin interrupciones en producción real[cite: 32].</p>
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                             <a href="https://todoagro.com.br/" target="_blank" class="btn-link">🌐 Web</a>
                             <a href="https://play.google.com/store/apps/details?id=com.todoagro.todoagroapp" target="_blank" class="btn-link">▶ Android</a>
@@ -198,8 +195,8 @@
                 <div class="glass-card">
                     <span class="mono" style="color: var(--accent); font-size: 0.85rem;" id="client-fintech">[ Cliente: MACROINTELL Brasil ]</span>
                     <div class="project-content">
-                        <h3>Agrocarteira (Billetera Virtual)</h3>
-                        <p id="fintech-p">Desarrollo actual Frontend y Mobile para esta plataforma Fintech. A diferencia de un e-commerce tradicional, aquí el desafío principal es manejar dinero real de los usuarios y garantizar la máxima seguridad transaccional al integrar flujos de pago altamente sensibles (como PIX y Boleto) para el mercado brasileño.</p>
+                        <h3>Agrocarteira (Billetera Virtual) [cite: 30]</h3>
+                        <p id="fintech-p">Desarrollo Frontend y Mobile[cite: 32]. El desafío principal es garantizar la seguridad transaccional al integrar flujos de pago altamente sensibles (como PIX y Boleto) para el mercado brasileño[cite: 32].</p>
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                             <a href="https://agrocarteira.com.br/" target="_blank" class="btn-link">🌐 Web</a>
                             <a href="https://play.google.com/store/apps/details?id=com.todoagro.agrocarteiraapp" target="_blank" class="btn-link">▶ Android</a>
@@ -212,7 +209,7 @@
                     <span class="mono" style="color: var(--text-muted); font-size: 0.85rem;" id="client-fono">[ Desarrollo Independiente ]</span>
                     <div class="project-content">
                         <h3>VocalPro (SaaS Clínico)</h3>
-                        <p id="fono-p">Desarrollo Fullstack de una plataforma SaaS para fonoaudiólogos. Implementé un sistema integral con control de accesos basado en roles, bases de datos relacionales y autenticación segura para garantizar la privacidad de los pacientes y facilitar la gestión del entorno clínico al profesional.</p>
+                        <p id="fono-p">Desarrollo Fullstack de una plataforma SaaS para fonoaudiólogos. Sistema con control de accesos basado en roles y bases de datos relacionales para garantizar la privacidad de los pacientes.</p>
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                             <a href="https://tpi-fono-frontend.vercel.app/" target="_blank" class="btn-link">🌐 Web</a>
                             <a href="https://github.com/TheNoobian/TPI-Fono-Frontend" target="_blank" class="btn-link">💻 Frontend Repo</a>
@@ -233,21 +230,17 @@
                     </div>
                 </div>
                 <div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;" id="edu-h3">Ingeniería en Sistemas</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;" id="edu-p">Cursando la etapa final de la carrera[cite: 2], consolidando conocimientos avanzados en arquitectura de software, bases de datos y gestión de proyectos tecnológicos.</p>
-                    <span class="tag-tech mono" style="background: rgba(14, 165, 233, 0.1); border: none; color: var(--accent);" id="edu-tag">Estudiante Avanzado</span>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;" id="edu-h3">Ingeniería en Sistemas [cite: 10]</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;" id="edu-p">Cursando la etapa final en la Universidad de la Cuenca del Plata[cite: 9, 10]. Consolidando conocimientos en arquitectura de software y gestión de proyectos[cite: 26].</p>
+                    <span class="tag-tech mono" style="background: rgba(14, 165, 233, 0.1); border: none; color: var(--accent);" id="edu-tag">Estudiante Avanzado [cite: 2]</span>
                 </div>
             </div>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;" id="course-intro">Cursos completados recientemente para mantener el stack actualizado:</p>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;" id="course-intro">Cursos completados recentemente:</p>
             <div class="course-grid">
-                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span><h4>React Native CLI para IOS y Android</h4></div>
+                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span><h4>React Native CLI IOS/Android</h4></div>
                 <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span><h4>React: De cero a experto</h4></div>
-                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Rodrigo Morales</span><h4>Máster en Typescript Nivel Profesional</h4></div>
+                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Rodrigo Morales</span><h4>Máster en Typescript</h4></div>
                 <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span><h4>Node: De cero a experto</h4></div>
-                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy</span><h4>Patrones de Diseño en JS y TypeScript</h4></div>
-                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Leifer Mendez</span><h4>AWS Curso Básico para desarrolladores</h4></div>
-                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Bonnie Schulkin</span><h4>React Server State (TanStack Query)</h4></div>
-                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Juan Jose Ortiz</span><h4>React Hooks, Redux y Material.UI</h4></div>
             </div>
         </section>
 
@@ -255,12 +248,12 @@
             <div class="glass-card grid-2">
                 <div>
                     <h2 class="section-title" id="title-contacto">Contacto</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;" id="contact-p">Si buscás un desarrollador con perfil Fullstack capaz de resolver problemas complejos, dejame un mensaje.</p>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;" id="contact-p">Si buscás un desarrollador Fullstack capaz de resolver problemas complejos[cite: 26], dejame un mensaje.</p>
                     <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                        <a href="mailto:bpini44@gmail.com" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;"><span>📧</span> bpini44@gmail.com</a>
-                        <a href="https://www.linkedin.com/in/bruno-pini-632757296/" target="_blank" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;"><span>💼</span> LinkedIn Profile</a>
-                        <a href="https://github.com/TheNoobian" target="_blank" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;"><span>💻</span> GitHub Profile</a>
-                        <a href="Bruno_Pini_CV.pdf" target="_blank" class="cv-highlight" id="cv-footer">📄 Descargar Currículum Vitae (.PDF)</a>
+                        <a href="mailto:bpini44@gmail.com" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;"><span>📧</span> bpini44@gmail.com [cite: 4]</a>
+                        <a href="https://www.linkedin.com/in/bruno-pini-632757296/" target="_blank" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;"><span>💼</span> LinkedIn Profile [cite: 7]</a>
+                        <a href="https://github.com/TheNoobian" target="_blank" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;"><span>💻</span> GitHub Profile [cite: 6]</a>
+                        <a href="Bruno_Pini_CV.pdf" target="_blank" class="cv-highlight" id="cv-footer">📄 Descargar CV (.PDF)</a>
                     </div>
                 </div>
                 <div>
@@ -283,42 +276,42 @@
         const translations = {
             es: {
                 lang_label: "ENGLISH",
-                nav_perfil: "<Perfil/>", nav_proyectos: "<Proyectos/>", nav_background: "<Background/>", nav_contacto: "<Contacto/>",
-                hero_badge: "Fullstack Developer", 
+                nav_perfil: "&lt;Perfil/&gt;", nav_proyectos: "&lt;Proyectos/&gt;", nav_background: "&lt;Background/&gt;", nav_contacto: "&lt;Contacto/&gt;",
+                hero_badge: "Fullstack Developer [cite: 2]", 
                 hero_title: "Soluciones completas<br><span>desde cero.</span>",
-                hero_subtitle: "Capacidad para estructurar bases de datos, levantar APIs y crear interfaces fluidas (Web y Mobile) asegurando el funcionamiento eficiente de todo el sistema.",
+                hero_subtitle: "Capacidad para estructurar bases de datos, levantar APIs y crear interfaces fluidas (Web y Mobile) asegurando el funcionamiento eficiente de todo el sistema. [cite: 25]",
                 btn_projects: "Ver Proyectos", btn_cv: "📄 Descargar CV", btn_video: "🎥 Video Presentación",
-                title_perfil: "Perfil Técnico", perfil_h3: "Visión 360° del Software",
-                perfil_p1: "Aunque actualmente mi enfoque principal está en el desarrollo Frontend y Mobile dentro de equipos ágiles (ClickUp/Jira), poseo un perfil Fullstack. Esto me permite no solo ejecutar tareas específicas en la interfaz, sino entender cómo la arquitectura de datos, la seguridad y el backend interactúan para hacer que el producto final sea realmente sólido.",
-                perfil_p2: "Me destaco por tomar proyectos desde sus cimientos y llevarlos hasta un funcionamiento eficiente en producción, siempre priorizando la escalabilidad del código y la mejor experiencia posible para el usuario final.",
-                title_proyectos: "En Producción", client_agro: "[ Cliente: MACROINTELL ]", agro_p: "Desarrollo activo de la plataforma web y la app móvil. Actualmente trabajo creando y manteniendo interfaces sólidas y fluidas. Mi enfoque asegura que la experiencia del usuario, desde la búsqueda hasta la finalización de la compra, opere sin interrupciones en el entorno de producción real.",
-                client_fintech: "[ Cliente: MACROINTELL Brasil ]", fintech_p: "Desarrollo actual Frontend y Mobile para esta plataforma Fintech. A diferencia de un e-commerce tradicional, aquí el desafío principal es manejar dinero real de los usuarios y garantizar la máxima seguridad transaccional al integrar flujos de pago altamente sensibles (como PIX y Boleto) para el mercado brasileño.",
-                client_fono: "[ Desarrollo Independiente ]", fono_p: "Desarrollo Fullstack de una plataforma SaaS para fonoaudiólogos. Implementé un sistema integral con control de accesos basado en roles, bases de datos relacionales y autenticación segura para garantizar la privacidad de los pacientes.",
-                title_background: "Background & Certificaciones", small_year: "Año en Curso", edu_h3: "Ingeniería en Sistemas",
-                edu_p: "Cursando la etapa final de la carrera, consolidando conocimientos avanzados en arquitectura de software y gestión de proyectos tecnológicos.",
-                edu_tag: "Estudiante Avanzado", course_intro: "Cursos completados recientemente para mantener el stack actualizado:",
-                title_contacto: "Contacto", contact_p: "Si buscás un desarrollador con perfil Fullstack capaz de resolver problemas complejos, dejame un mensaje.",
-                cv_footer: "📄 Descargar Currículum Vitae (.PDF)", form_name: "Tu Nombre", form_email: "Tu Email", form_msg: "¿En qué puedo ayudarte?", btn_submit: "Enviar Mensaje",
+                title_perfil: "Perfil Técnico", perfil_h3: "Visión 360° del Software [cite: 25]",
+                perfil_p1: "Aunque actualmente mi enfoque principal está en el desarrollo Frontend y Mobile dentro de equipos ágiles [cite: 29], poseo un perfil Fullstack[cite: 2]. Esto me permite entender cómo la arquitectura de datos, la seguridad y el backend interactúan para hacer que el producto final sea sólido[cite: 25].",
+                perfil_p2: "Me destaco por tomar proyectos desde sus cimientos y llevarlos hasta un funcionamiento eficiente en producción [cite: 25, 26], siempre priorizando la escalabilidad del código y la mejor experiencia para el usuario final[cite: 24].",
+                title_proyectos: "En Producción", client_agro: "[ Cliente: MACROINTELL ]", agro_p: "Desarrollo activo de la plataforma web y app móvil[cite: 32]. Creo interfaces fluidas y aseguro que la experiencia del usuario, desde la búsqueda hasta la compra, opere sin interrupciones en producción real[cite: 32].",
+                client_fintech: "[ Cliente: MACROINTELL Brasil ]", fintech_p: "Desarrollo Frontend y Mobile[cite: 32]. El desafío principal es garantizar la seguridad transaccional al integrar flujos de pago altamente sensibles (como PIX y Boleto) para el mercado brasileño[cite: 32].",
+                client_fono: "[ Desarrollo Independiente ]", fono_p: "Desarrollo Fullstack de una plataforma SaaS para fonoaudiólogos. Sistema con control de accesos basado en roles y bases de datos relacionales para garantizar la privacidad de los pacientes.",
+                title_background: "Background & Certificaciones", small_year: "Año en Curso", edu_h3: "Ingeniería en Sistemas [cite: 10]",
+                edu_p: "Cursando la etapa final en la Universidad de la Cuenca del Plata[cite: 9, 10]. Consolidando conocimientos avanzados en arquitectura de software[cite: 25].",
+                edu_tag: "Estudiante Avanzado [cite: 2]", course_intro: "Cursos completados recientemente:",
+                title_contacto: "Contacto", contact_p: "Si buscás un desarrollador Fullstack capaz de resolver problemas complejos[cite: 26], dejame un mensaje.",
+                cv_footer: "📄 Descargar CV (.PDF)", form_name: "Tu Nombre", form_email: "Tu Email", form_msg: "¿En qué puedo ayudarte?", btn_submit: "Enviar Mensaje",
                 footer_text: "Fecha de creación: 22 de Marzo de 2026 | © Bruno Pini."
             },
             en: {
                 lang_label: "ESPAÑOL",
-                nav_perfil: "<Profile/>", nav_proyectos: "<Projects/>", nav_background: "<Background/>", nav_contacto: "<Contact/>",
-                hero_badge: "Fullstack Developer", 
+                nav_perfil: "&lt;Profile/&gt;", nav_proyectos: "&lt;Projects/&gt;", nav_background: "&lt;Background/&gt;", nav_contacto: "&lt;Contact/&gt;",
+                hero_badge: "Fullstack Developer [cite: 2]", 
                 hero_title: "Full-scale solutions<br><span>from scratch.</span>",
-                hero_subtitle: "Ability to structure databases, build APIs, and create fluid interfaces (Web & Mobile) ensuring the efficient operation of the entire system.",
+                hero_subtitle: "Ability to structure databases, build APIs, and create fluid interfaces (Web & Mobile) ensuring the efficient operation of the entire system. [cite: 25]",
                 btn_projects: "View Projects", btn_cv: "📄 Download CV", btn_video: "🎥 Video Presentation",
-                title_perfil: "Technical Profile", perfil_h3: "360° Software Vision",
-                perfil_p1: "While my current focus is on Frontend and Mobile development within agile teams (ClickUp/Jira), I possess a Fullstack profile. This allows me not only to execute specific interface tasks but to understand how data architecture, security, and the backend interact to make the final product truly solid.",
-                perfil_p2: "I excel at taking projects from their foundations to efficient production operation, always prioritizing code scalability and the best possible user experience.",
-                title_proyectos: "In Production", client_agro: "[ Client: MACROINTELL ]", agro_p: "Active development of the web platform and mobile app. Currently working on creating and maintaining solid, fluid interfaces. My focus ensures the user experience, from search to checkout, operates seamlessly in the real production environment.",
-                client_fintech: "[ Client: MACROINTELL Brazil ]", fintech_p: "Current Frontend and Mobile development for this Fintech platform. Unlike traditional e-commerce, the main challenge here is handling real user money and ensuring maximum transactional security by integrating highly sensitive payment flows (like PIX and Boleto) for the Brazilian market.",
-                client_fono: "[ Independent Development ]", fono_p: "Fullstack development of a SaaS platform for speech therapists. I implemented a comprehensive system with role-based access control, relational databases, and secure authentication to guarantee patient privacy.",
-                title_background: "Background & Certifications", small_year: "Current Year", edu_h3: "Systems Engineering",
-                edu_p: "Currently in the final stage of my degree, consolidating advanced knowledge in software architecture and technology project management.",
-                edu_tag: "Advanced Student", course_intro: "Courses recently completed to keep the stack up to date:",
-                title_contacto: "Contact", contact_p: "If you're looking for a Fullstack developer capable of solving complex problems, leave me a message.",
-                cv_footer: "📄 Download Curriculum Vitae (.PDF)", form_name: "Your Name", form_email: "Your Email", form_msg: "How can I help you?", btn_submit: "Send Message",
+                title_perfil: "Technical Profile", perfil_h3: "360° Software Vision [cite: 25]",
+                perfil_p1: "While my current focus is on Frontend and Mobile development within agile teams [cite: 29], I possess a Fullstack profile[cite: 2]. This allows me to understand how data architecture, security, and the backend interact to make the final product truly solid[cite: 25].",
+                perfil_p2: "I excel at taking projects from their foundations to efficient production operation [cite: 25, 26], always prioritizing code scalability and the best possible user experience[cite: 24].",
+                title_proyectos: "In Production", client_agro: "[ Client: MACROINTELL ]", agro_p: "Active development of the web platform and mobile app[cite: 32]. I create fluid interfaces and ensure the user experience, from search to purchase, operates seamlessly in production[cite: 32].",
+                client_fintech: "[ Client: MACROINTELL Brazil ]", fintech_p: "Frontend and Mobile development[cite: 32]. The main challenge is ensuring transactional security by integrating highly sensitive payment flows (like PIX and Boleto) for the Brazilian market[cite: 32].",
+                client_fono: "[ Independent Development ]", fono_p: "Fullstack development of a SaaS platform for speech therapists. System with role-based access control and relational databases to guarantee patient privacy.",
+                title_background: "Background & Certifications", small_year: "Current Year", edu_h3: "Systems Engineering [cite: 10]",
+                edu_p: "Currently in the final stage at Universidad de la Cuenca del Plata[cite: 9, 10]. Consolidating advanced knowledge in software architecture[cite: 25].",
+                edu_tag: "Advanced Student [cite: 2]", course_intro: "Recently completed courses:",
+                title_contacto: "Contact", contact_p: "If you are looking for a Fullstack developer capable of solving complex problems[cite: 26], leave me a message.",
+                cv_footer: "📄 Download CV (.PDF)", form_name: "Your Name", form_email: "Your Email", form_msg: "How can I help you?", btn_submit: "Send Message",
                 footer_text: "Creation Date: March 22, 2026 | © Bruno Pini."
             }
         };
