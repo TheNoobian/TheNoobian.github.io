@@ -7,13 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
-        /* Paleta de colores: Deep Slate y Neon Cyan */
         :root {
-            --bg-main: #0f172a;      /* Azul muy oscuro */
-            --bg-card: rgba(30, 41, 59, 0.7); /* Tarjetas semi transparentes */
-            --text-main: #f8fafc;    /* Blanco puro */
-            --text-muted: #94a3b8;   /* Gris azulado */
-            --accent: #0ea5e9;       /* Celeste brillante */
+            --bg-main: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #0ea5e9;
             --accent-glow: rgba(14, 165, 233, 0.3);
             --border-light: rgba(255, 255, 255, 0.08);
         }
@@ -32,45 +31,50 @@
         }
 
         .mono { font-family: 'Fira Code', monospace; }
-        
         .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
         section { padding: 7rem 0; position: relative; }
         
-        /* Navbar Glassmorphism */
         nav { position: fixed; top: 0; width: 100%; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-light); z-index: 100; transition: all 0.3s; }
         .nav-content { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; max-width: 1100px; margin: 0 auto; }
         .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: 1px; color: var(--text-main); }
         .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 2rem; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: var(--accent); }
-        @media (max-width: 768px) { .nav-links { display: none; } }
 
-        /* Titles & Text */
+        /* Botón de Idioma */
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .lang-btn:hover { background: var(--accent); color: var(--bg-main); border-color: var(--accent); }
+
         .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; position: relative; display: inline-block; }
         .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50px; height: 4px; background: var(--accent); border-radius: 2px; }
         
-        /* Hero Section */
         .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 60px; }
         .hero-badge { display: inline-block; background: rgba(14, 165, 233, 0.1); color: var(--accent); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem; border: 1px solid var(--accent-glow); }
         .hero-title { font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
         .hero-title span { background: linear-gradient(135deg, #0ea5e9, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-subtitle { font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 300; color: var(--text-muted); max-width: 600px; }
 
-        /* Cards Style (Glassmorphism) */
         .glass-card { background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border-light); border-radius: 16px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; }
         .glass-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 15px var(--accent-glow); border-color: rgba(14, 165, 233, 0.3); }
 
-        /* Layout Grid */
         .grid-2 { display: grid; grid-template-columns: 1fr; gap: 3rem; }
         @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
 
-        /* Skills Tags */
         .tags-container { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
         .tag-tech { background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); padding: 0.5rem 1.2rem; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s; }
         .tag-tech:hover { background: var(--accent); color: var(--bg-main); border-color: var(--accent); transform: scale(1.05); }
 
-        /* --- NUEVO SISTEMA BACKGROUND --- */
         .background-dashboard { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
         @media (min-width: 768px) { .background-dashboard { grid-template-columns: auto 1fr; gap: 4rem; } }
         
@@ -79,7 +83,6 @@
         .circle-inner span { font-size: 1.5rem; font-weight: 800; color: var(--text-main); line-height: 1; }
         .circle-inner small { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
 
-        /* Proyectos */
         .project-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
         .project-content h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
         .project-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
@@ -88,25 +91,24 @@
         .btn-cv { background: rgba(14, 165, 233, 0.15); border: 1px solid var(--accent); color: var(--accent); }
         .btn-cv:hover { background: var(--accent); color: var(--bg-main); box-shadow: 0 0 15px var(--accent-glow); }
 
-        /* Cursos / Formación */
         .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
         .course-card { padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light); background: linear-gradient(145deg, rgba(255,255,255,0.02), transparent); transition: all 0.3s; }
         .course-card:hover { border-color: var(--accent); background: rgba(14, 165, 233, 0.05); }
         .course-card h4 { font-size: 1rem; margin-bottom: 0.5rem; }
 
-        /* Contacto */
         .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
         .contact-form input, .contact-form textarea { width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--border-light); border-radius: 8px; color: var(--text-main); padding: 1rem; font-family: 'Outfit', sans-serif; font-size: 1rem; outline: none; transition: border-color 0.3s; }
         .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-glow); }
         .btn-submit { background: var(--accent); color: var(--bg-main); border: none; padding: 1rem; border-radius: 8px; font-weight: 800; font-size: 1rem; cursor: pointer; transition: all 0.3s; width: fit-content; }
         .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-glow); }
 
-        /* Animaciones al hacer scroll */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
         .cv-highlight { color: var(--text-main); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.5rem; background: rgba(14, 165, 233, 0.1); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--accent); font-weight: 600; font-size: 1.1rem; transition: all 0.3s; }
         .cv-highlight:hover { background: var(--accent); color: var(--bg-main); box-shadow: 0 5px 20px var(--accent-glow); transform: translateY(-3px); }
+
+        @media (max-width: 768px) { .nav-links a { display: none; } }
     </style>
 </head>
 <body>
@@ -115,10 +117,11 @@
         <div class="nav-content">
             <div class="logo">BRUNO PINI<span>.DEV</span></div>
             <div class="nav-links mono">
-                <a href="#perfil">&lt;Perfil/&gt;</a>
-                <a href="#proyectos">&lt;Proyectos/&gt;</a>
-                <a href="#background">&lt;Background/&gt;</a>
-                <a href="#contacto">&lt;Contacto/&gt;</a>
+                <a href="#perfil" id="nav-perfil">&lt;Perfil/&gt;</a>
+                <a href="#proyectos" id="nav-proyectos">&lt;Proyectos/&gt;</a>
+                <a href="#background" id="nav-background">&lt;Background/&gt;</a>
+                <a href="#contacto" id="nav-contacto">&lt;Contacto/&gt;</a>
+                <button class="lang-btn" onclick="toggleLanguage()" id="lang-toggle">EN</button>
             </div>
         </div>
     </nav>
@@ -127,26 +130,26 @@
         
         <section id="inicio" class="hero reveal">
             <div>
-                <div class="hero-badge mono">Fullstack Developer</div>
-                <h1 class="hero-title">Soluciones completas<br><span>desde cero.</span></h1>
-                <p class="hero-subtitle">Capacidad para estructurar bases de datos, levantar APIs y crear interfaces fluidas (Web y Mobile) asegurando el funcionamiento eficiente de todo el sistema.</p>
+                <div class="hero-badge mono" id="hero-badge">Fullstack Developer</div>
+                <h1 class="hero-title" id="hero-title">Soluciones completas<br><span>desde cero.</span></h1>
+                <p class="hero-subtitle" id="hero-subtitle">Capacidad para estructurar bases de datos, levantar APIs y crear interfaces fluidas (Web y Mobile) asegurando el funcionamiento eficiente de todo el sistema.</p>
                 <div style="margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="#proyectos" class="btn-submit" style="text-decoration: none; display: inline-block;">Ver Proyectos</a>
-                    <a href="Bruno_Pini_CV.pdf" target="_blank" class="btn-link btn-cv">📄 Descargar CV</a>
-                    <a href="LINK_A_TU_VIDEO" target="_blank" class="btn-link" style="border: 1px solid var(--accent); color: var(--accent);">🎥 Video Presentación</a>
+                    <a href="#proyectos" class="btn-submit" id="btn-projects">Ver Proyectos</a>
+                    <a href="Bruno_Pini_CV.pdf" target="_blank" class="btn-link btn-cv" id="btn-cv">📄 Descargar CV</a>
+                    <a href="https://youtu.be/77CWF_XFLOo" target="_blank" class="btn-link" style="border: 1px solid var(--accent); color: var(--accent);" id="btn-video">🎥 Video Presentación</a>
                 </div>
             </div>
         </section>
 
         <section id="perfil" class="reveal">
-            <h2 class="section-title">Perfil Técnico</h2>
+            <h2 class="section-title" id="title-perfil">Perfil Técnico</h2>
             <div class="grid-2">
                 <div class="glass-card">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Visión 360° del Software</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;" id="perfil-h3">Visión 360° del Software</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;" id="perfil-p1">
                         Aunque actualmente mi enfoque principal está en el desarrollo Frontend y Mobile dentro de equipos ágiles (ClickUp/Jira), poseo un perfil Fullstack. Esto me permite no solo ejecutar tareas específicas en la interfaz, sino entender cómo la arquitectura de datos, la seguridad y el backend interactúan para hacer que el producto final sea realmente sólido.
                     </p>
-                    <p style="color: var(--text-muted);">
+                    <p style="color: var(--text-muted);" id="perfil-p2">
                         Me destaco por tomar proyectos desde sus cimientos y llevarlos hasta un funcionamiento eficiente en producción, siempre priorizando la escalabilidad del código y la mejor experiencia posible para el usuario final.
                     </p>
                 </div>
@@ -170,16 +173,16 @@
         </section>
 
         <section id="proyectos" class="reveal">
-            <h2 class="section-title">En Producción</h2>
+            <h2 class="section-title" id="title-proyectos">En Producción</h2>
             
             <div class="project-grid">
                 <div class="glass-card">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                        <span class="mono" style="color: var(--accent); font-size: 0.85rem;">[ Cliente: MACROINTELL ]</span>
+                        <span class="mono" style="color: var(--accent); font-size: 0.85rem;" id="client-agro">[ Cliente: MACROINTELL ]</span>
                     </div>
                     <div class="project-content">
                         <h3>TodoAgro Marketplace</h3>
-                        <p>Desarrollo activo de la plataforma web y la app móvil. Actualmente trabajo creando y manteniendo interfaces sólidas y fluidas. Mi enfoque asegura que la experiencia del usuario, desde la búsqueda hasta la finalización de la compra, opere sin interrupciones en el entorno de producción real.</p>
+                        <p id="agro-p">Desarrollo activo de la plataforma web y la app móvil. Actualmente trabajo creando y manteniendo interfaces sólidas y fluidas. Mi enfoque asegura que la experiencia del usuario, desde la búsqueda hasta la finalización de la compra, opere sin interrupciones en el entorno de producción real.</p>
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                             <a href="https://todoagro.com.br/" target="_blank" class="btn-link">🌐 Web</a>
                             <a href="https://play.google.com/store/apps/details?id=com.todoagro.todoagroapp" target="_blank" class="btn-link">▶ Android</a>
@@ -190,11 +193,11 @@
 
                 <div class="glass-card">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                        <span class="mono" style="color: var(--accent); font-size: 0.85rem;">[ Cliente: MACROINTELL Brasil ]</span>
+                        <span class="mono" style="color: var(--accent); font-size: 0.85rem;" id="client-fintech">[ Cliente: MACROINTELL Brasil ]</span>
                     </div>
                     <div class="project-content">
                         <h3>Agrocarteira (Billetera Virtual)</h3>
-                        <p>Desarrollo actual Frontend y Mobile para esta plataforma Fintech. A diferencia de un e-commerce tradicional, aquí el desafío principal es manejar dinero real de los usuarios y garantizar la máxima seguridad transaccional al integrar flujos de pago altamente sensibles (como PIX y Boleto) para el mercado brasileño.</p>
+                        <p id="fintech-p">Desarrollo actual Frontend y Mobile para esta plataforma Fintech. A diferencia de un e-commerce tradicional, aquí el desafío principal es manejar dinero real de los usuarios y garantizar la máxima seguridad transaccional al integrar flujos de pago altamente sensibles (como PIX y Boleto) para el mercado brasileño.</p>
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                             <a href="https://agrocarteira.com.br/" target="_blank" class="btn-link">🌐 Web</a>
                             <a href="https://play.google.com/store/apps/details?id=com.todoagro.agrocarteiraapp" target="_blank" class="btn-link">▶ Android</a>
@@ -205,15 +208,15 @@
 
                 <div class="glass-card">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                        <span class="mono" style="color: var(--text-muted); font-size: 0.85rem;">[ Desarrollo Independiente ]</span>
+                        <span class="mono" style="color: var(--text-muted); font-size: 0.85rem;" id="client-fono">[ Desarrollo Independiente ]</span>
                     </div>
                     <div class="project-content">
                         <h3>VocalPro (SaaS Clínico)</h3>
-                        <p>Desarrollo Fullstack de una plataforma SaaS para fonoaudiólogos. Implementé un sistema integral con control de accesos basado en roles, bases de datos relacionales y autenticación segura para garantizar la privacidad de los pacientes y facilitar la gestión del entorno clínico al profesional.</p>
+                        <p id="fono-p">Desarrollo Fullstack de una plataforma SaaS para fonoaudiólogos. Implementé un sistema integral con control de accesos basado en roles, bases de datos relacionales y autenticación segura para garantizar la privacidad de los pacientes y facilitar la gestión del entorno clínico al profesional.</p>
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <a href="https://tpi-fono-frontend.vercel.app/" target="_blank" class="btn-link">🌐 Ver Proyecto</a>
-                            <a href="https://github.com/TheNoobian/TPI-Fono-Frontend" target="_blank" class="btn-link">💻 Repo Frontend</a>
-                            <a href="https://github.com/TheNoobian/TPI-Fono-BackTend" target="_blank" class="btn-link">💻 Repo Backend</a>
+                            <a href="https://tpi-fono-frontend.vercel.app/" target="_blank" class="btn-link">🌐 Web</a>
+                            <a href="https://github.com/TheNoobian/TPI-Fono-Frontend" target="_blank" class="btn-link">💻 Frontend Repo</a>
+                            <a href="https://github.com/TheNoobian/TPI-Fono-BackTend" target="_blank" class="btn-link">💻 Backend Repo</a>
                         </div>
                     </div>
                 </div>
@@ -221,68 +224,40 @@
         </section>
 
         <section id="background" class="reveal">
-            <h2 class="section-title">Background & Certificaciones</h2>
-            
+            <h2 class="section-title" id="title-background">Background & Certificaciones</h2>
             <div class="glass-card background-dashboard" style="margin-bottom: 3rem;">
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
                     <div class="circle-chart" id="circleProgress">
                         <div class="circle-inner">
                             <span id="percentText">5to</span>
-                            <small>Año en Curso</small>
+                            <small id="small-year">Año en Curso</small>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Ingeniería en Sistemas</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;">Cursando la etapa final de la carrera, consolidando conocimientos avanzados en arquitectura de software, bases de datos y gestión de proyectos tecnológicos.</p>
-                    <span class="tag-tech mono" style="background: rgba(14, 165, 233, 0.1); border: none; color: var(--accent);">Estudiante Avanzado</span>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;" id="edu-h3">Ingeniería en Sistemas</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;" id="edu-p">Cursando la etapa final de la carrera, consolidando conocimientos avanzados en arquitectura de software, bases de datos y gestión de proyectos tecnológicos.</p>
+                    <span class="tag-tech mono" style="background: rgba(14, 165, 233, 0.1); border: none; color: var(--accent);" id="edu-tag">Estudiante Avanzado</span>
                 </div>
             </div>
-
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Cursos completados recientemente para mantener el stack actualizado (y más por venir):</p>
-            
-            <div class="course-grid">
-                <div class="course-card">
-                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span>
-                    <h4>React Native CLI para IOS y Android</h4>
-                </div>
-                <div class="course-card">
-                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span>
-                    <h4>React: De cero a experto</h4>
-                </div>
-                <div class="course-card">
-                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Rodrigo Morales</span>
-                    <h4>Máster en Typescript Nivel Profesional</h4>
-                </div>
-                <div class="course-card">
-                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span>
-                    <h4>Node: De cero a experto</h4>
-                </div>
-                <div class="course-card">
-                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy</span>
-                    <h4>Patrones de Diseño en JS y TypeScript</h4>
-                </div>
-                <div class="course-card">
-                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Leifer Mendez</span>
-                    <h4>AWS Curso Básico para desarrolladores</h4>
-                </div>
-                <div class="course-card">
-                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Bonnie Schulkin</span>
-                    <h4>React Server State (TanStack Query)</h4>
-                </div>
-                <div class="course-card">
-                    <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Juan Jose Ortiz</span>
-                    <h4>React Hooks, Redux y Material.UI</h4>
-                </div>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;" id="course-intro">Cursos completados recientemente para mantener el stack actualizado (y más por venir):</p>
+            <div class="course-grid" id="course-container">
+                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span><h4>React Native CLI para IOS y Android</h4></div>
+                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span><h4>React: De cero a experto</h4></div>
+                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Rodrigo Morales</span><h4>Máster en Typescript Nivel Profesional</h4></div>
+                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span><h4>Node: De cero a experto</h4></div>
+                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy</span><h4>Patrones de Diseño en JS y TypeScript</h4></div>
+                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Leifer Mendez</span><h4>AWS Curso Básico para desarrolladores</h4></div>
+                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Bonnie Schulkin</span><h4>React Server State (TanStack Query)</h4></div>
+                <div class="course-card"><span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Juan Jose Ortiz</span><h4>React Hooks, Redux y Material.UI</h4></div>
             </div>
         </section>
 
         <section id="contacto" class="reveal" style="padding-bottom: 3rem;">
             <div class="glass-card grid-2">
                 <div>
-                    <h2 class="section-title" style="margin-bottom: 1.5rem;">Contacto</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;">Si buscás un desarrollador con perfil Fullstack capaz de resolver problemas complejos y escribir código escalable, dejame un mensaje.</p>
-                    
+                    <h2 class="section-title" style="margin-bottom: 1.5rem;" id="title-contacto">Contacto</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;" id="contact-p">Si buscás un desarrollador con perfil Fullstack capaz de resolver problemas complejos y escribir código escalable, dejame un mensaje.</p>
                     <div style="display: flex; flex-direction: column; gap: 0.8rem;">
                         <a href="mailto:bpini44@gmail.com" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;">
                             <span style="background: rgba(255,255,255,0.1); padding: 0.5rem; border-radius: 8px;">📧</span> bpini44@gmail.com
@@ -293,61 +268,96 @@
                         <a href="https://github.com/TheNoobian" target="_blank" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem; padding: 0.5rem 0;">
                             <span style="background: rgba(255,255,255,0.1); padding: 0.5rem; border-radius: 8px;">💻</span> GitHub Profile
                         </a>
-                        
-                        <a href="Bruno_Pini_CV.pdf" target="_blank" class="cv-highlight">
-                            📄 Descargar Currículum Vitae (.PDF)
-                        </a>
+                        <a href="Bruno_Pini_CV.pdf" target="_blank" class="cv-highlight" id="cv-footer">📄 Descargar Currículum Vitae (.PDF)</a>
                     </div>
                 </div>
-                
                 <div>
                     <form action="https://formsubmit.co/bpini44@gmail.com" method="POST" class="contact-form">
                         <input type="hidden" name="_next" value="https://thenoobian.github.io/">
-                        <input type="hidden" name="_subject" value="¡Mensaje desde el Portfolio!">
-                        
-                        <input type="text" name="name" placeholder="Tu Nombre" required>
-                        <input type="email" name="email" placeholder="Tu Email" required>
-                        <textarea name="message" rows="4" placeholder="¿En qué puedo ayudarte?" required></textarea>
-                        
-                        <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                        <input type="text" name="name" id="form-name" placeholder="Tu Nombre" required>
+                        <input type="email" name="email" id="form-email" placeholder="Tu Email" required>
+                        <textarea name="message" id="form-msg" rows="4" placeholder="¿En qué puedo ayudarte?" required></textarea>
+                        <button type="submit" class="btn-submit" id="btn-submit">Enviar Mensaje</button>
                     </form>
                 </div>
             </div>
         </section>
 
         <footer style="text-align: center; padding: 2rem 0; color: var(--text-muted); border-top: 1px solid var(--border-light); margin-top: 2rem;">
-            <p class="mono" style="font-size: 0.85rem;">Fecha de creación: 22 de Marzo de 2026 | © Bruno Pini.</p>
+            <p class="mono" style="font-size: 0.85rem;" id="footer-text">Fecha de creación: 22 de Marzo de 2026 | © Bruno Pini.</p>
         </footer>
-
     </div>
 
     <script>
+        const translations = {
+            es: {
+                nav_perfil: "<Perfil/>", nav_proyectos: "<Proyectos/>", nav_background: "<Background/>", nav_contacto: "<Contacto/>",
+                hero_badge: "Fullstack Developer", hero_title: "Soluciones completas<br><span>desde cero.</span>",
+                hero_subtitle: "Capacidad para estructurar bases de datos, levantar APIs y crear interfaces fluidas (Web y Mobile) asegurando el funcionamiento eficiente de todo el sistema.",
+                btn_projects: "Ver Proyectos", btn_cv: "📄 Descargar CV", btn_video: "🎥 Video Presentación",
+                title_perfil: "Perfil Técnico", perfil_h3: "Visión 360° del Software",
+                perfil_p1: "Aunque actualmente mi enfoque principal está en el desarrollo Frontend y Mobile dentro de equipos ágiles (ClickUp/Jira), poseo un perfil Fullstack. Esto me permite no solo ejecutar tareas específicas en la interfaz, sino entender cómo la arquitectura de datos, la seguridad y el backend interactúan para hacer que el producto final sea realmente sólido.",
+                perfil_p2: "Me destaco por tomar proyectos desde sus cimientos y llevarlos hasta un funcionamiento eficiente en producción, siempre priorizando la escalabilidad del código y la mejor experiencia posible para el usuario final.",
+                title_proyectos: "En Producción", client_agro: "[ Cliente: MACROINTELL ]", agro_p: "Desarrollo activo de la plataforma web y la app móvil. Actualmente trabajo creando y manteniendo interfaces sólidas y fluidas. Mi enfoque asegura que la experiencia del usuario, desde la búsqueda hasta la finalización de la compra, opere sin interrupciones en el entorno de producción real.",
+                client_fintech: "[ Cliente: MACROINTELL Brasil ]", fintech_p: "Desarrollo actual Frontend y Mobile para esta plataforma Fintech. A diferencia de un e-commerce tradicional, aquí el desafío principal es manejar dinero real de los usuarios y garantizar la máxima seguridad transaccional al integrar flujos de pago altamente sensibles (como PIX y Boleto) para el mercado brasileño.",
+                client_fono: "[ Desarrollo Independiente ]", fono_p: "Desarrollo Fullstack de una plataforma SaaS para fonoaudiólogos. Implementé un sistema integral con control de accesos basado en roles, bases de datos relacionales y autenticación segura para garantizar la privacidad de los pacientes y facilitar la gestión del entorno clínico al profesional.",
+                title_background: "Background & Certificaciones", small_year: "Año en Curso", edu_h3: "Ingeniería en Sistemas",
+                edu_p: "Cursando la etapa final de la carrera, consolidando conocimientos avanzados en arquitectura de software, bases de datos y gestión de proyectos tecnológicos.",
+                edu_tag: "Estudiante Avanzado", course_intro: "Cursos completados recientemente para mantener el stack actualizado (y más por venir):",
+                title_contacto: "Contacto", contact_p: "Si buscás un desarrollador con perfil Fullstack capaz de resolver problemas complejos y escribir código escalable, dejame un mensaje.",
+                cv_footer: "📄 Descargar Currículum Vitae (.PDF)", form_name: "Tu Nombre", form_email: "Tu Email", form_msg: "¿En qué puedo ayudarte?", btn_submit: "Enviar Mensaje",
+                footer_text: "Fecha de creación: 22 de Marzo de 2026 | © Bruno Pini."
+            },
+            en: {
+                nav_perfil: "<Profile/>", nav_proyectos: "<Projects/>", nav_background: "<Background/>", nav_contacto: "<Contact/>",
+                hero_badge: "Fullstack Developer", hero_title: "Full-scale solutions<br><span>from scratch.</span>",
+                hero_subtitle: "Ability to structure databases, build APIs, and create fluid interfaces (Web & Mobile) ensuring the efficient operation of the entire system.",
+                btn_projects: "View Projects", btn_cv: "📄 Download CV", btn_video: "🎥 Video Presentation",
+                title_perfil: "Technical Profile", perfil_h3: "360° Software Vision",
+                perfil_p1: "While my current focus is on Frontend and Mobile development within agile teams (ClickUp/Jira), I possess a Fullstack profile. This allows me not only to execute specific interface tasks but to understand how data architecture, security, and the backend interact to make the final product truly solid.",
+                perfil_p2: "I excel at taking projects from their foundations to efficient production operation, always prioritizing code scalability and the best possible user experience.",
+                title_proyectos: "In Production", client_agro: "[ Client: MACROINTELL ]", agro_p: "Active development of the web platform and mobile app. Currently working on creating and maintaining solid, fluid interfaces. My focus ensures the user experience, from search to checkout, operates seamlessly in the real production environment.",
+                client_fintech: "[ Client: MACROINTELL Brazil ]", fintech_p: "Current Frontend and Mobile development for this Fintech platform. Unlike traditional e-commerce, the main challenge here is handling real user money and ensuring maximum transactional security by integrating highly sensitive payment flows (like PIX and Boleto) for the Brazilian market.",
+                client_fono: "[ Independent Development ]", fono_p: "Fullstack development of a SaaS platform for speech therapists. I implemented a comprehensive system with role-based access control, relational databases, and secure authentication to guarantee patient privacy and facilitate clinical management for the professional.",
+                title_background: "Background & Certifications", small_year: "Current Year", edu_h3: "Systems Engineering",
+                edu_p: "Currently in the final stage of my degree, consolidating advanced knowledge in software architecture, databases, and technology project management.",
+                edu_tag: "Advanced Student", course_intro: "Courses recently completed to keep the stack up to date (and more to come):",
+                title_contacto: "Contact", contact_p: "If you're looking for a Fullstack developer capable of solving complex problems and writing scalable code, leave me a message.",
+                cv_footer: "📄 Download Curriculum Vitae (.PDF)", form_name: "Your Name", form_email: "Your Email", form_msg: "How can I help you?", btn_submit: "Send Message",
+                footer_text: "Creation Date: March 22, 2026 | © Bruno Pini."
+            }
+        };
+
+        let currentLang = 'es';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            document.getElementById('lang-toggle').innerText = currentLang === 'es' ? 'EN' : 'ES';
+            
+            Object.keys(translations[currentLang]).forEach(key => {
+                const el = document.getElementById(key.replace('_', '-'));
+                if (el) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = translations[currentLang][key];
+                    else el.innerHTML = translations[currentLang][key];
+                }
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             const circleChart = document.getElementById("circleProgress");
             let animated = false;
-
             const reveals = document.querySelectorAll(".reveal");
 
             function revealOnScroll() {
                 let windowHeight = window.innerHeight;
-                let elementVisible = 150;
-
                 reveals.forEach(reveal => {
-                    let elementTop = reveal.getBoundingClientRect().top;
-                    if (elementTop < windowHeight - elementVisible) {
-                        reveal.classList.add("active");
-                    }
+                    if (reveal.getBoundingClientRect().top < windowHeight - 150) reveal.classList.add("active");
                 });
-
-                if (!animated && circleChart) {
-                    let circleTop = circleChart.getBoundingClientRect().top;
-                    if (circleTop < windowHeight - elementVisible) {
-                        animated = true;
-                        circleChart.style.background = `conic-gradient(var(--accent) 360deg, rgba(255,255,255,0.05) 360deg)`;
-                    }
+                if (!animated && circleChart && circleChart.getBoundingClientRect().top < windowHeight - 150) {
+                    animated = true;
+                    circleChart.style.background = `conic-gradient(var(--accent) 360deg, rgba(255,255,255,0.05) 360deg)`;
                 }
             }
-
             window.addEventListener("scroll", revealOnScroll);
             revealOnScroll();
         });
