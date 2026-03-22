@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bruno Pini | Frontend & Mobile Dev</title>
+    <title>Bruno Pini | Fullstack Developer</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
-        /* Nueva paleta de colores: Deep Slate y Neon Cyan */
+        /* Paleta de colores: Deep Slate y Neon Cyan */
         :root {
             --bg-main: #0f172a;      /* Azul muy oscuro */
             --bg-card: rgba(30, 41, 59, 0.7); /* Tarjetas semi transparentes */
@@ -27,7 +27,6 @@
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            /* Fondo sutil con gradiente para que no sea un color plano */
             background-image: radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.05), transparent 25%), 
                               radial-gradient(circle at 85% 30%, rgba(14, 165, 233, 0.05), transparent 25%);
         }
@@ -71,25 +70,14 @@
         .tag-tech { background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); padding: 0.5rem 1.2rem; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s; }
         .tag-tech:hover { background: var(--accent); color: var(--bg-main); border-color: var(--accent); transform: scale(1.05); }
 
-        /* --- NUEVO SISTEMA ACADÉMICO (Reemplazo de barra) --- */
-        .academic-dashboard { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
-        @media (min-width: 768px) { .academic-dashboard { grid-template-columns: auto 1fr; gap: 4rem; } }
+        /* --- NUEVO SISTEMA BACKGROUND (Reemplazo del timeline académico) --- */
+        .background-dashboard { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+        @media (min-width: 768px) { .background-dashboard { grid-template-columns: auto 1fr; gap: 4rem; } }
         
-        /* Gráfico Circular */
         .circle-chart { position: relative; width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(var(--accent) 0deg, rgba(255,255,255,0.05) 0deg); display: flex; align-items: center; justify-content: center; transition: background 1.5s ease; }
-        .circle-inner { width: 130px; height: 130px; background: var(--bg-card); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; }
-        .circle-inner span { font-size: 2rem; font-weight: 800; color: var(--text-main); line-height: 1; }
-        .circle-inner small { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-        
-        /* Timeline Vertical */
-        .timeline { border-left: 2px solid var(--border-light); padding-left: 1.5rem; position: relative; }
-        .timeline-item { position: relative; margin-bottom: 1.5rem; }
-        .timeline-item:last-child { margin-bottom: 0; }
-        .timeline-item::before { content: ''; position: absolute; left: -1.5rem; top: 5px; width: 12px; height: 12px; background: var(--bg-card); border: 2px solid var(--accent); border-radius: 50%; transform: translateX(-50%); }
-        .timeline-item.completed::before { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
-        .timeline-item.active::before { border-color: #f59e0b; border-width: 3px; background: #f59e0b; box-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
-        .timeline-item h4 { font-size: 1rem; color: var(--text-main); }
-        .timeline-item p { font-size: 0.85rem; color: var(--text-muted); }
+        .circle-inner { width: 130px; height: 130px; background: var(--bg-card); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; text-align: center; }
+        .circle-inner span { font-size: 1.5rem; font-weight: 800; color: var(--text-main); line-height: 1; }
+        .circle-inner small { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
 
         /* Proyectos */
         .project-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
@@ -108,7 +96,7 @@
         .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
         .contact-form input, .contact-form textarea { width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--border-light); border-radius: 8px; color: var(--text-main); padding: 1rem; font-family: 'Outfit', sans-serif; font-size: 1rem; outline: none; transition: border-color 0.3s; }
         .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-glow); }
-        .btn-submit { background: var(--accent); color: var(--bg-main); border: none; padding: 1rem; border-radius: 8px; font-weight: 800; font-size: 1rem; cursor: pointer; transition: all 0.3s; }
+        .btn-submit { background: var(--accent); color: var(--bg-main); border: none; padding: 1rem; border-radius: 8px; font-weight: 800; font-size: 1rem; cursor: pointer; transition: all 0.3s; width: fit-content; }
         .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-glow); }
 
         /* Animaciones al hacer scroll */
@@ -120,12 +108,12 @@
 
     <nav>
         <div class="nav-content">
-            <div class="logo">BRUNO<span>.</span>DEV</div>
+            <div class="logo">BRUNO PINI<span>.</span></div>
             <div class="nav-links mono">
                 <a href="#perfil">&lt;Perfil/&gt;</a>
-                <a href="#academico">&lt;Educación/&gt;</a>
-                <a href="#proyectos">&lt;Obras/&gt;</a>
-                <a href="#formacion">&lt;Formación/&gt;</a>
+                <a href="#proyectos">&lt;Proyectos/&gt;</a>
+                <a href="#background">&lt;Background/&gt;</a>
+                <a href="#contacto">&lt;Contacto/&gt;</a>
             </div>
         </div>
     </nav>
@@ -134,9 +122,9 @@
         
         <section id="inicio" class="hero reveal">
             <div>
-                <div class="hero-badge mono">Software Engineer</div>
-                <h1 class="hero-title">Construyendo<br><span>soluciones reales.</span></h1>
-                <p class="hero-subtitle">Especializado en Frontend y Mobile. Transformo lógica de negocio compleja en aplicaciones ágiles, seguras y escalables para usuarios finales.</p>
+                <div class="hero-badge mono">Fullstack Developer</div>
+                <h1 class="hero-title">Soluciones completas<br><span>desde cero.</span></h1>
+                <p class="hero-subtitle">Capacidad para estructurar bases de datos, levantar APIs y crear interfaces fluidas (Web y Mobile) asegurando el funcionamiento eficiente de todo el sistema.</p>
                 <div style="margin-top: 2rem; display: flex; gap: 1rem;">
                     <a href="#proyectos" class="btn-submit" style="text-decoration: none; display: inline-block;">Ver Proyectos</a>
                     <a href="#contacto" class="btn-link" style="background: transparent; border: 1px solid var(--border-light);">Contactar</a>
@@ -148,12 +136,12 @@
             <h2 class="section-title">Perfil Técnico</h2>
             <div class="grid-2">
                 <div class="glass-card">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Más que escribir código</h3>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Visión 360° del Software</h3>
                     <p style="color: var(--text-muted); margin-bottom: 1rem;">
-                        Mi trabajo se centra en integrarme en ecosistemas ágiles. Tomo requerimientos técnicos (ClickUp, Jira) y los convierto en código de producción. Soy un jugador de equipo: desarrollo interfaces fluidas y aplicaciones móviles asegurando que la conexión con el backend sea impecable.
+                        Aunque actualmente mi enfoque principal está en el desarrollo Frontend y Mobile dentro de equipos ágiles (ClickUp/Jira), poseo un perfil Fullstack. Esto me permite no solo ejecutar tareas específicas en la interfaz, sino entender cómo la arquitectura de datos, la seguridad y el backend interactúan para hacer que el producto final sea realmente sólido.
                     </p>
                     <p style="color: var(--text-muted);">
-                        Haber implementado flujos críticos en producción (como sistemas de pago PIX/Boleto en Brasil) me ha dado la experiencia necesaria para empezar a asumir roles de liderazgo técnico, guiando a mis compañeros y proponiendo mejoras en la arquitectura.
+                        Me destaco por tomar proyectos desde sus cimientos y llevarlos hasta un funcionamiento eficiente en producción, siempre priorizando la escalabilidad del código y la mejor experiencia posible para el usuario final.
                     </p>
                 </div>
                 <div>
@@ -175,44 +163,8 @@
             </div>
         </section>
 
-        <section id="academico" class="reveal">
-            <h2 class="section-title">Ruta Universitaria</h2>
-            <div class="glass-card academic-dashboard">
-                
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-                    <div class="circle-chart" id="circleProgress">
-                        <div class="circle-inner">
-                            <span id="percentText">0%</span>
-                            <small>Completado</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Ingeniería en Sistemas de Información</h3>
-                    <p style="color: var(--accent); font-weight: 600; margin-bottom: 2rem;">Universidad de la Cuenca del Plata</p>
-                    
-                    <div class="timeline">
-                        <div class="timeline-item completed">
-                            <h4>Fundamentos y Programación Básica</h4>
-                            <p>Años 1 y 2 - Completados</p>
-                        </div>
-                        <div class="timeline-item completed">
-                            <h4>Diseño de Sistemas y Bases de Datos</h4>
-                            <p>Años 3 y 4 - Completados</p>
-                        </div>
-                        <div class="timeline-item active">
-                            <h4 style="color: #f59e0b;">Prácticas Profesionales y Tesis</h4>
-                            <p>Año 5 - En curso (Etapa Final)</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
         <section id="proyectos" class="reveal">
-            <h2 class="section-title">Obras en Producción</h2>
+            <h2 class="section-title">En Producción</h2>
             
             <div class="project-grid">
                 <div class="glass-card">
@@ -221,7 +173,7 @@
                     </div>
                     <div class="project-content">
                         <h3>TodoAgro Marketplace</h3>
-                        <p>Desarrollo activo en la plataforma web y app móvil. Mi rol se enfoca en crear interfaces sólidas, aplicar metodologías ágiles para cumplir requerimientos complejos y asegurar que el registro de usuarios y flujos de compra operen sin fallas en el entorno real.</p>
+                        <p>Desarrollo activo de la plataforma web y la app móvil. Actualmente trabajo creando y manteniendo interfaces sólidas y fluidas. Mi enfoque asegura que la experiencia del usuario, desde la búsqueda hasta la finalización de la compra, opere sin interrupciones en el entorno de producción real.</p>
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                             <a href="https://todoagro.com.br/" target="_blank" class="btn-link">🌐 Web</a>
                             <a href="https://play.google.com/store/apps/details?id=com.todoagro.todoagroapp" target="_blank" class="btn-link">▶ Android</a>
@@ -236,7 +188,7 @@
                     </div>
                     <div class="project-content">
                         <h3>Agrocarteira (Billetera Virtual)</h3>
-                        <p>Plataforma Fintech para Brasil. Lideré técnicamente tareas de integración front-end y mobile para flujos de pago altamente sensibles (como PIX y Boleto), asegurando la trazabilidad de los datos y la seguridad en cada transacción del usuario.</p>
+                        <p>Desarrollo actual Frontend y Mobile para esta plataforma Fintech. A diferencia de un e-commerce tradicional, aquí el desafío principal es manejar dinero real de los usuarios y garantizar la máxima seguridad transaccional al integrar flujos de pago altamente sensibles (como PIX y Boleto) para el mercado brasileño.</p>
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                             <a href="https://agrocarteira.com.br/" target="_blank" class="btn-link">🌐 Web</a>
                             <a href="https://play.google.com/store/apps/details?id=com.todoagro.agrocarteiraapp" target="_blank" class="btn-link">▶ Android</a>
@@ -247,11 +199,11 @@
 
                 <div class="glass-card">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                        <span class="mono" style="color: var(--text-muted); font-size: 0.85rem;">[ Proyecto Académico Universitario ]</span>
+                        <span class="mono" style="color: var(--text-muted); font-size: 0.85rem;">[ Desarrollo Independiente ]</span>
                     </div>
                     <div class="project-content">
                         <h3>VocalPro (SaaS Clínico)</h3>
-                        <p>Plataforma SaaS para fonoaudiólogos. Implementé un sistema de control de accesos basado en roles donde el profesional administra pacientes, y los pacientes acceden de forma segura con credenciales únicas. Integración fullstack del requerimiento.</p>
+                        <p>Desarrollo Fullstack de una plataforma SaaS para fonoaudiólogos. Implementé un sistema integral con control de accesos basado en roles, bases de datos relacionales y autenticación segura para garantizar la privacidad de los pacientes y facilitar la gestión del entorno clínico al profesional.</p>
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                             <a href="https://tpi-fono-frontend.vercel.app/" target="_blank" class="btn-link">🌐 Ver Proyecto</a>
                         </div>
@@ -260,12 +212,31 @@
             </div>
         </section>
 
-        <section id="formacion" class="reveal">
-            <h2 class="section-title">Actualización Técnica</h2>
+        <section id="background" class="reveal">
+            <h2 class="section-title">Background & Certificaciones</h2>
+            
+            <div class="glass-card background-dashboard" style="margin-bottom: 3rem;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <div class="circle-chart" id="circleProgress">
+                        <div class="circle-inner">
+                            <span id="percentText">5to</span>
+                            <small>Año en Curso</small>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Ingeniería en Sistemas</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">Cursando la etapa final de la carrera, consolidando conocimientos avanzados en arquitectura de software, bases de datos y gestión de proyectos tecnológicos.</p>
+                    <span class="tag-tech mono" style="background: rgba(14, 165, 233, 0.1); border: none; color: var(--accent);">Estudiante Avanzado</span>
+                </div>
+            </div>
+
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Cursos completados recientemente para mantener el stack actualizado (y más por venir):</p>
+            
             <div class="course-grid">
                 <div class="course-card">
                     <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span>
-                    <h4>React Native CLI para IOS y Android (2025)</h4>
+                    <h4>React Native CLI para IOS y Android</h4>
                 </div>
                 <div class="course-card">
                     <span class="mono text-muted" style="font-size: 0.75rem;">Udemy / Fernando Herrera</span>
@@ -301,8 +272,8 @@
         <section id="contacto" class="reveal" style="padding-bottom: 3rem;">
             <div class="glass-card grid-2">
                 <div>
-                    <h2 class="section-title" style="margin-bottom: 1.5rem;">Conectemos</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 2rem;">Si buscás un Dev Mobile/Frontend que ejecute con precisión y entienda el impacto de negocio de cada línea de código, dejame un mensaje.</p>
+                    <h2 class="section-title" style="margin-bottom: 1.5rem;">Contacto</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;">Si buscás un desarrollador con perfil Fullstack capaz de resolver problemas complejos y escribir código escalable, dejame un mensaje.</p>
                     
                     <div style="display: flex; flex-direction: column; gap: 1rem;">
                         <a href="mailto:bpini44@gmail.com" style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 1rem;">
@@ -330,19 +301,16 @@
         </section>
 
         <footer style="text-align: center; padding: 2rem 0; color: var(--text-muted); border-top: 1px solid var(--border-light); margin-top: 2rem;">
-            <p class="mono" style="font-size: 0.85rem;">© 2026 Bruno Pini. Construido para ISI - UCP.</p>
+            <p class="mono" style="font-size: 0.85rem;">© 2026 Bruno Pini. All rights reserved.</p>
         </footer>
 
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Animación del gráfico circular (Se llena hasta 80%)
             const circleChart = document.getElementById("circleProgress");
-            const percentText = document.getElementById("percentText");
             let animated = false;
 
-            // Sistema de scroll reveal
             const reveals = document.querySelectorAll(".reveal");
 
             function revealOnScroll() {
@@ -356,27 +324,17 @@
                     }
                 });
 
-                // Activar animación del círculo si está visible
                 if (!animated && circleChart) {
                     let circleTop = circleChart.getBoundingClientRect().top;
                     if (circleTop < windowHeight - elementVisible) {
                         animated = true;
-                        // Animar el CSS gradient
-                        circleChart.style.background = `conic-gradient(var(--accent) 288deg, rgba(255,255,255,0.05) 288deg)`;
-                        
-                        // Contador de números
-                        let count = 0;
-                        let interval = setInterval(() => {
-                            count++;
-                            percentText.innerText = count + "%";
-                            if(count === 80) clearInterval(interval);
-                        }, 20); // Velocidad del contador
+                        circleChart.style.background = `conic-gradient(var(--accent) 360deg, rgba(255,255,255,0.05) 360deg)`;
                     }
                 }
             }
 
             window.addEventListener("scroll", revealOnScroll);
-            revealOnScroll(); // Disparar al cargar
+            revealOnScroll();
         });
     </script>
 </body>
